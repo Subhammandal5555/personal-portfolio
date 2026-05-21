@@ -58,7 +58,7 @@ export default function Hero() {
             variants={itemVariants}
             className="font-heading font-extrabold text-4xl sm:text-6xl md:text-8xl tracking-tight text-white mb-6 leading-none"
           >
-            SUBHAM <span className="font-marker font-normal text-brand-accent lowercase tracking-wide text-[0.8em]">mandal</span>
+            SUBHAM <span className="font-marker font-normal text-brand-accent tracking-wide text-[0.8em]">Mandal</span>
           </motion.h1>
 
           {/* Sub-Title / Role with extreme weight contrasts */}

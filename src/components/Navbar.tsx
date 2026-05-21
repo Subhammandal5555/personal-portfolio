@@ -59,7 +59,7 @@ export default function Navbar() {
           <div className="w-10 h-10 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center transition-all duration-300 group-hover:border-brand-accent group-hover:shadow-[0_0_15px_rgba(135,90,123,0.3)]">
             <Cpu className="w-5 h-5 text-brand-accent transition-transform duration-500 group-hover:rotate-180" />
           </div>
-          <span className="font-heading font-extrabold text-xl tracking-wider text-white odoo-header">
+          <span className="font-heading font-extrabold text-xl tracking-wider text-white">
             SUBHAM<span className="text-brand-accent font-light">.M</span>
           </span>
         </a>

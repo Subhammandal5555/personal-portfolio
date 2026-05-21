@@ -48,24 +48,3 @@ body {
 html {
   scroll-behavior: smooth;
 }
-
-/* Odoo-inspired hand-drawn highlight marker utility */
-.odoo-header {
-  position: relative;
-  display: inline-block;
-  z-index: 1;
-}
-
-.odoo-header::after {
-  content: "";
-  position: absolute;
-  left: -4px;
-  bottom: 6px;
-  width: calc(100% + 8px);
-  height: 0.35em;
-  background: rgba(135, 90, 123, 0.2);
-  border-radius: 4px 10px 8px 12px / 12px 5px 10px 4px;
-  z-index: -1;
-  pointer-events: none;
-  transform: rotate(-0.8deg);
-}

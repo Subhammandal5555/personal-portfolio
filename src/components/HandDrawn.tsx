@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 // Reusable hand-drawn marker loop component
 export function HandDrawnLoop({ children }: { children: React.ReactNode }) {
   return (
-    <span className="relative inline-block px-3 py-1 select-none">
+    <span className="relative inline-block px-3 py-1">
       <span className="relative z-10 text-white font-extrabold font-sans">{children}</span>
       <svg
         className="absolute top-[-4px] left-[-4px] w-[calc(100%+8px)] h-[calc(100%+8px)] overflow-visible pointer-events-none"
@@ -32,7 +32,7 @@ export function HandDrawnLoop({ children }: { children: React.ReactNode }) {
 // Reusable hand-drawn fluid rough double underline component
 export function HandDrawnUnderline({ children }: { children: React.ReactNode }) {
   return (
-    <span className="relative inline-block px-1 select-none">
+    <span className="relative inline-block px-1">
       <span className="relative z-10 font-extrabold text-white font-sans">{children}</span>
       <svg
         className="absolute bottom-[-10px] left-0 w-full h-[14px] overflow-visible pointer-events-none"
@@ -73,7 +73,7 @@ export function HandDrawnUnderline({ children }: { children: React.ReactNode }) 
 // Reusable highlighter semi-transparent brush overlay component
 export function HandDrawnHighlight({ children }: { children: React.ReactNode }) {
   return (
-    <span className="relative inline-block px-2 py-0.5 select-none">
+    <span className="relative inline-block px-2 py-0.5">
       <span className="relative z-10 text-white font-extrabold font-sans">{children}</span>
       <svg
         className="absolute top-0 left-0 w-full h-full overflow-visible pointer-events-none"

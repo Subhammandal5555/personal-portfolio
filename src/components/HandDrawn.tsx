@@ -14,7 +14,7 @@ export function HandDrawnLoop({ children }: { children: React.ReactNode }) {
       >
         <motion.path
           d="M 2,50 C 5,10 95,5 98,45 C 100,75 80,95 45,95 C 10,95 -2,70 5,45 C 10,25 35,5 92,8"
-          stroke="#875A7B"
+          stroke="#71e3ae"
           strokeWidth="3.5"
           strokeLinecap="round"
           fill="none"
@@ -48,7 +48,7 @@ export function HandDrawnUnderline({
         {/* Underline stroke 1 */}
         <motion.path
           d="M 2, 4 Q 50, 1 98, 6"
-          stroke="#875A7B"
+          stroke="#71e3ae"
           strokeWidth="3"
           strokeLinecap="round"
           fill="none"
@@ -61,7 +61,7 @@ export function HandDrawnUnderline({
         {/* Underline stroke 2 */}
         <motion.path
           d="M 8, 8 Q 55, 5 92, 7"
-          stroke="#875A7B"
+          stroke="#71e3ae"
           strokeWidth="2"
           strokeLinecap="round"
           fill="none"
@@ -88,7 +88,7 @@ export function HandDrawnHighlight({ children }: { children: React.ReactNode }) 
       >
         <motion.path
           d="M 2,52 Q 50,46 98,54 Q 50,56 4,50"
-          stroke="#875A7B"
+          stroke="#71e3ae"
           strokeWidth="28"
           strokeLinecap="round"
           strokeLinejoin="round"

@@ -55,10 +55,10 @@ export default function Contact() {
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div className="flex flex-col gap-6">
               <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-white tracking-wide">
-                Let's discuss hardware architectures, full-stack ecosystems, or GATE preparation.
+                Let's discuss hardware architectures, full-stack ecosystems, or business growth.
               </h3>
               <p className="font-sans font-light text-sm text-gray-400 leading-relaxed">
-                Whether you have an upcoming responsive web application project, an IoT micro-controller design puzzle, or just want to chat about engineering frameworks—feel free to drop a message.
+                Whether you have an upcoming responsive web application project, an IoT micro-controller design puzzle, or are looking for a technical partner to help scale your operations—I am fully open to new opportunities to join innovative teams and grow businesses together. Feel free to drop a message.
               </p>
 
               <div className="flex flex-col gap-4 mt-4 font-sans text-sm text-gray-300">

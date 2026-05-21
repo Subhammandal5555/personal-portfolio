@@ -56,7 +56,7 @@ export default function Hero() {
           {/* Main Title - Heavy sans-serif with stylized light marker alternate */}
           <motion.h1
             variants={itemVariants}
-            className="font-heading font-extrabold text-4xl sm:text-6xl md:text-8xl tracking-tight text-white mb-6 leading-none select-none"
+            className="font-heading font-extrabold text-4xl sm:text-6xl md:text-8xl tracking-tight text-white mb-6 leading-none select-none odoo-header"
           >
             SUBHAM <span className="font-marker font-normal text-brand-accent lowercase tracking-wide text-[0.8em]">mandal</span>
           </motion.h1>

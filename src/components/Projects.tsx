@@ -54,7 +54,7 @@ export default function Projects() {
           <span className="font-sans text-xs uppercase tracking-widest text-brand-accent font-medium mb-3 block">
             Portfolio
           </span>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight text-white mb-4 select-none">
+          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight text-white mb-4 select-none odoo-header">
             FEATURED <span className="font-marker text-brand-accent lowercase tracking-wide font-normal text-[1.15em] ml-1">projects</span>
           </h2>
           <div className="w-12 h-[2px] bg-brand-accent" />
@@ -114,7 +114,7 @@ export default function Projects() {
             <div className="p-6 flex-grow flex flex-col justify-between">
               <div>
                 <div className="flex justify-between items-start mb-3">
-                  <h3 className="font-heading font-extrabold text-lg text-white uppercase tracking-wider group-hover:text-brand-accent transition-colors duration-300">
+                  <h3 className="font-heading font-extrabold text-lg text-white uppercase tracking-wider group-hover:text-brand-accent transition-colors duration-300 odoo-header">
                     Gyananjali Platform
                   </h3>
                   <span className="px-2 py-0.5 rounded-sm bg-brand-accent/10 border border-brand-accent/30 text-[9px] font-extrabold text-brand-accent tracking-widest uppercase">
@@ -195,7 +195,7 @@ export default function Projects() {
             <div className="p-6 flex-grow flex flex-col justify-between">
               <div>
                 <div className="flex justify-between items-start mb-3">
-                  <h3 className="font-heading font-extrabold text-lg text-white uppercase tracking-wider group-hover:text-brand-accent transition-colors duration-300">
+                  <h3 className="font-heading font-extrabold text-lg text-white uppercase tracking-wider group-hover:text-brand-accent transition-colors duration-300 odoo-header">
                     Spotify Frontend
                   </h3>
                   <span className="px-2 py-0.5 rounded-sm bg-brand-border text-[9px] font-extrabold text-gray-400 tracking-widest uppercase">
@@ -291,7 +291,7 @@ export default function Projects() {
             <div className="p-6 flex-grow flex flex-col justify-between">
               <div>
                 <div className="flex justify-between items-start mb-3">
-                  <h3 className="font-heading font-extrabold text-lg text-white uppercase tracking-wider group-hover:text-brand-accent transition-colors duration-300">
+                  <h3 className="font-heading font-extrabold text-lg text-white uppercase tracking-wider group-hover:text-brand-accent transition-colors duration-300 odoo-header">
                     Simon Logic Game
                   </h3>
                   <span className="px-2 py-0.5 rounded-sm bg-brand-border text-[9px] font-extrabold text-gray-400 tracking-widest uppercase">

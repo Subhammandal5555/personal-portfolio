@@ -27,7 +27,7 @@ export default function About() {
           <span className="font-sans text-xs uppercase tracking-widest text-brand-accent font-medium mb-3 block">
             Profile
           </span>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight text-white mb-4 select-none">
+          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight text-white mb-4 select-none odoo-header">
             ABOUT <span className="font-marker text-brand-accent lowercase tracking-wide font-normal text-[1.15em] ml-1">me</span>
           </h2>
           <div className="w-12 h-[2px] bg-brand-accent" />
@@ -38,7 +38,7 @@ export default function About() {
           
           {/* Left Bio Details (takes 7 columns) */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-white tracking-wide">
+            <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-white tracking-wide odoo-header">
               Bridging the gap between software systems and hardware engineering.
             </h3>
             

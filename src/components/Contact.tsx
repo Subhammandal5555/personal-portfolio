@@ -43,8 +43,8 @@ export default function Contact() {
           <span className="font-sans text-xs uppercase tracking-widest text-brand-accent font-medium mb-3 block">
             Connectivity
           </span>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight text-white mb-4">
-            GET IN <span className="font-light italic text-brand-accent">TOUCH</span>
+          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight text-white mb-4 select-none">
+            GET IN <span className="font-marker text-brand-accent lowercase tracking-wide font-normal text-[1.15em] ml-1">touch</span>
           </h2>
           <div className="w-12 h-[2px] bg-brand-accent" />
         </div>

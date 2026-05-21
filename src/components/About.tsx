@@ -113,7 +113,7 @@ export default function About() {
               </div>
 
               <p className="font-sans font-light text-sm text-gray-300 leading-relaxed">
-                Ranked and qualified in the highly competitive Graduate Aptitude Test in Engineering (GATE 2026) for Electronics and Communication, validating deep fundamentals in computer systems, mathematics, and electromagnetic theory.
+                Qualified in the Graduate Aptitude Test in Engineering (GATE 2026) in Electronics and Communication Engineering, validating core technical fundamentals.
               </p>
             </motion.div>
 

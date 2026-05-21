@@ -49,7 +49,10 @@ export default function Hero() {
             variants={itemVariants}
             className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-border bg-brand-card/40 backdrop-blur-sm mb-6 text-xs uppercase tracking-widest text-gray-400 font-sans"
           >
-            <span className="flex h-2 w-2 rounded-full bg-brand-accent animate-ping" />
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#40D04E] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#40D04E]" />
+            </span>
             <span>Open For Opportunities</span>
           </motion.div>
 

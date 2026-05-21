@@ -54,8 +54,8 @@ export default function Projects() {
           <span className="font-sans text-xs uppercase tracking-widest text-brand-accent font-medium mb-3 block">
             Portfolio
           </span>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight text-white mb-4">
-            FEATURED <span className="font-marker text-brand-accent lowercase tracking-wide font-normal text-[1.15em] ml-1">projects</span>
+          <h2 className="font-marker font-normal text-3xl sm:text-5xl tracking-wide text-white mb-4 lowercase">
+            featured <span className="text-brand-accent">projects</span>
           </h2>
           <div className="w-12 h-[2px] bg-brand-accent" />
         </div>

@@ -1,5 +1,5 @@
-import Contact from "@/components/Contact";
+import Home from "../page";
 
 export default function ContactPage() {
-  return <Contact />;
+  return <Home />;
 }

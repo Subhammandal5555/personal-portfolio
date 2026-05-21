@@ -1,5 +1,5 @@
-import Skills from "@/components/Skills";
+import Home from "../page";
 
 export default function SkillsPage() {
-  return <Skills />;
+  return <Home />;
 }

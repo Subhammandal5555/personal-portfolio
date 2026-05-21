@@ -1,24 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Cpu } from "lucide-react";
 
 const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Skills", href: "/skills" },
-  { name: "Projects", href: "/projects" },
-  { name: "Contact", href: "/contact" },
+  { name: "Home", href: "/", id: "home" },
+  { name: "About", href: "/about", id: "about" },
+  { name: "Skills", href: "/skills", id: "skills" },
+  { name: "Projects", href: "/projects", id: "projects" },
+  { name: "Contact", href: "/contact", id: "contact" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("/");
   const pathname = usePathname();
+  const isScrollingRef = useRef(false);
 
+  // Background scrolled state
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -27,6 +30,126 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Sniff path on mount and scroll to deep route
+  useEffect(() => {
+    const path = window.location.pathname;
+    if (path !== "/") {
+      const sectionId = path.substring(1);
+      const element = document.getElementById(sectionId);
+      if (element) {
+        isScrollingRef.current = true;
+        setActiveSection(path);
+        const timer = setTimeout(() => {
+          const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = elementPosition - 80; // 80px sticky offset
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+          setTimeout(() => {
+            isScrollingRef.current = false;
+          }, 800);
+        }, 500);
+        return () => clearTimeout(timer);
+      }
+    } else {
+      setActiveSection("/");
+    }
+  }, []);
+
+  // Popstate listener to handle browser back/forward buttons
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      const sectionId = path === "/" ? "home" : path.substring(1);
+      const element = document.getElementById(sectionId);
+      if (element) {
+        isScrollingRef.current = true;
+        setActiveSection(path);
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - 80;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+        setTimeout(() => {
+          isScrollingRef.current = false;
+        }, 800);
+      } else {
+        setActiveSection(path);
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  // IntersectionObserver to update URL dynamically as user scrolls
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-40% 0px -50% 0px", // triggers when element is centered in viewport
+      threshold: 0,
+    };
+
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      if (isScrollingRef.current) return;
+
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          const path = id === "home" ? "/" : `/${id}`;
+          setActiveSection(path);
+          
+          if (window.location.pathname !== path) {
+            window.history.replaceState(null, "", path);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+    const sections = ["home", "about", "skills", "projects", "contact"];
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // Custom click interceptor
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, sectionId: string) => {
+    e.preventDefault();
+    
+    isScrollingRef.current = true;
+    setActiveSection(href);
+    
+    if (window.location.pathname !== href) {
+      window.history.pushState(null, "", href);
+    }
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - 80; // 80px offset
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+
+    setIsOpen(false);
+
+    setTimeout(() => {
+      isScrollingRef.current = false;
+    }, 800);
+  };
 
   return (
     <motion.header
@@ -43,6 +166,7 @@ export default function Navbar() {
         {/* Brand/Logo */}
         <Link 
           href="/" 
+          onClick={(e) => handleNavClick(e, "/", "home")}
           className="flex items-center gap-2 group"
         >
           <div className="w-10 h-10 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center transition-all duration-300 group-hover:border-brand-accent group-hover:shadow-[0_0_15px_rgba(135,90,123,0.3)]">
@@ -56,11 +180,12 @@ export default function Navbar() {
         {/* Desktop Nav Links */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = activeSection === link.href;
             return (
               <Link
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href, link.id)}
                 className="relative font-sans text-sm font-medium text-gray-400 hover:text-white transition-colors duration-300 tracking-wide"
               >
                 {link.name}
@@ -77,6 +202,7 @@ export default function Navbar() {
           
           <Link
             href="/contact"
+            onClick={(e) => handleNavClick(e, "/contact", "contact")}
             className="font-sans text-xs uppercase tracking-widest px-4 py-2 border border-brand-accent text-brand-accent rounded-sm bg-brand-accent/5 hover:bg-brand-accent hover:text-white transition-all duration-300 hover:shadow-[0_0_15px_rgba(135,90,123,0.4)]"
           >
             Hire Me
@@ -106,9 +232,9 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href, link.id)}
                   className={`font-sans text-base py-2 transition-colors duration-300 ${
-                    pathname === link.href
+                    activeSection === link.href
                       ? "text-brand-accent font-semibold"
                       : "text-gray-400 hover:text-white"
                   }`}
@@ -118,7 +244,7 @@ export default function Navbar() {
               ))}
               <Link
                 href="/contact"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => handleNavClick(e, "/contact", "contact")}
                 className="w-full text-center font-sans text-xs uppercase tracking-widest py-3 border border-brand-accent text-brand-accent rounded-sm bg-brand-accent/5 hover:bg-brand-accent hover:text-white transition-all duration-300"
               >
                 Hire Me

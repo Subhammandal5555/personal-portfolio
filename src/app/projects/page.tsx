@@ -1,5 +1,5 @@
-import Projects from "@/components/Projects";
+import Home from "../page";
 
 export default function ProjectsPage() {
-  return <Projects />;
+  return <Home />;
 }

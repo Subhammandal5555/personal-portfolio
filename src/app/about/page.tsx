@@ -1,5 +1,5 @@
-import About from "@/components/About";
+import Home from "../page";
 
 export default function AboutPage() {
-  return <About />;
+  return <Home />;
 }

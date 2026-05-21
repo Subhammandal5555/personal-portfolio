@@ -19,7 +19,14 @@ export default function Hero() {
         behavior: "smooth"
       });
 
-      window.history.pushState(null, "", `/${sectionId}`);
+      // Local dev uses hashes to prevent 404s, Production Netlify uses clean paths
+      const isLocal = typeof window !== "undefined" && 
+        (window.location.hostname === "localhost" || 
+         window.location.hostname === "127.0.0.1" || 
+         window.location.port !== "");
+      
+      const cleanPath = isLocal ? `/#${sectionId}` : `/${sectionId}`;
+      window.history.pushState(null, "", cleanPath);
     }
   };
 

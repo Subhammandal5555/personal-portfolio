@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Cpu } from "lucide-react";
 
@@ -17,7 +17,20 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
-  // Programmatic offset-aware smooth scrolling utility that updates history clean path
+  const isScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Helper to determine clean URL path vs hash based on environment
+  const getTargetUrl = (sectionId: string) => {
+    if (sectionId === "home") return "/";
+    const isLocal = typeof window !== "undefined" && 
+      (window.location.hostname === "localhost" || 
+       window.location.hostname === "127.0.0.1" || 
+       window.location.port !== "");
+    return isLocal ? `/#${sectionId}` : `/${sectionId}`;
+  };
+
+  // Programmatic offset-aware smooth scrolling utility that updates history path/hash safely
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const sectionId = href.substring(1);
@@ -27,49 +40,81 @@ export default function Navbar() {
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
+      // Lock intersection observer updates during programmatic scrolling
+      isScrollingRef.current = true;
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth"
       });
 
-      // Update browser URL bar to a clean hashtag-free path
-      const cleanPath = sectionId === "home" ? "/" : `/${sectionId}`;
-      window.history.pushState(null, "", cleanPath);
+      const targetUrl = getTargetUrl(sectionId);
+      window.history.pushState(null, "", targetUrl);
       setActiveSection(sectionId);
+
+      // Release lock after smooth scroll completes
+      scrollTimeoutRef.current = setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 800);
     }
   };
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScrollHeader = () => {
       setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScrollHeader);
 
-      // Simple active link detection based on section positions
-      const sections = navLinks.map((link) => link.href.substring(1));
-      const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
+    // Dynamic section detection using Intersection Observer
+    const observerOptions = {
+      root: null, // viewport
+      rootMargin: "-40% 0px -50% 0px", // triggers when section occupies the sweet spot of the screen
+      threshold: 0
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      if (isScrollingRef.current) return;
+
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          setActiveSection(sectionId);
+          
+          // Smoothly update browser URL bar without polluting browser back history
+          const targetUrl = getTargetUrl(sectionId);
+          window.history.replaceState(null, "", targetUrl);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    const sections = ["home", "about", "skills", "projects", "contact"];
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScrollHeader);
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.unobserve(el);
+      });
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    };
   }, []);
 
   useEffect(() => {
-    // Handle clean URL direct hits/refreshes (e.g. /about or /skills) by scrolling on mount
-    const path = window.location.pathname.substring(1);
-    if (path && ["about", "skills", "projects", "contact"].includes(path)) {
+    // Handle clean URL or hash direct hits/refreshes by scrolling on mount
+    const hash = typeof window !== "undefined" ? window.location.hash.substring(1) : "";
+    const path = typeof window !== "undefined" ? window.location.pathname.substring(1) : "";
+    const targetId = hash || path;
+
+    if (targetId && ["about", "skills", "projects", "contact"].includes(targetId)) {
       setTimeout(() => {
-        const element = document.getElementById(path);
+        const element = document.getElementById(targetId);
         if (element) {
           const offset = 80;
           const elementPosition = element.getBoundingClientRect().top;
@@ -78,7 +123,7 @@ export default function Navbar() {
             top: offsetPosition,
             behavior: "smooth"
           });
-          setActiveSection(path);
+          setActiveSection(targetId);
         }
       }, 500);
     }

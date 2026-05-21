@@ -55,7 +55,7 @@ export default function Projects() {
             Portfolio
           </span>
           <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight text-white mb-4">
-            FEATURED <span className="font-light text-gray-400">PROJECTS</span>
+            FEATURED <span className="font-light italic text-brand-accent">PROJECTS</span>
           </h2>
           <div className="w-12 h-[2px] bg-brand-accent" />
         </div>

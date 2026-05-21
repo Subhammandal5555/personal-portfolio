@@ -3,6 +3,71 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Code2, Cpu } from "lucide-react";
 
+// Reusable hand-drawn marker loop component
+function HandDrawnLoop({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="relative inline-block px-3 py-1 select-none">
+      <span className="relative z-10 text-white font-extrabold">{children}</span>
+      <svg
+        className="absolute top-0 left-0 w-full h-full overflow-visible pointer-events-none"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        <motion.path
+          d="M 2,50 C 5,10 95,5 98,45 C 100,75 80,95 45,95 C 10,95 -2,70 5,45 C 10,25 35,5 92,8"
+          stroke="#875A7B"
+          strokeWidth="3"
+          strokeLinecap="round"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          whileInView={{ pathLength: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeInOut", delay: 0.3 }}
+        />
+      </svg>
+    </span>
+  );
+}
+
+// Reusable hand-drawn fluid rough double underline component
+function HandDrawnUnderline({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="relative inline-block px-1 select-none">
+      <span className="relative z-10 font-extrabold text-white">{children}</span>
+      <svg
+        className="absolute bottom-[-8px] left-0 w-full h-[12px] overflow-visible pointer-events-none"
+        viewBox="0 0 100 10"
+        preserveAspectRatio="none"
+      >
+        {/* Underline stroke 1 */}
+        <motion.path
+          d="M 2, 5 Q 50, 2 98, 7"
+          stroke="#875A7B"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          whileInView={{ pathLength: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
+        />
+        {/* Underline stroke 2 */}
+        <motion.path
+          d="M 8, 9 Q 55, 6 92, 8"
+          stroke="#875A7B"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          whileInView={{ pathLength: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.8 }}
+        />
+      </svg>
+    </span>
+  );
+}
+
 export default function Hero() {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -52,18 +117,18 @@ export default function Hero() {
             <span>Open For Opportunities</span>
           </motion.div>
 
-          {/* Main Title */}
+          {/* Main Title - Heavy sans-serif with stylized light italic alternate */}
           <motion.h1
             variants={itemVariants}
             className="font-heading font-extrabold text-4xl sm:text-6xl md:text-8xl tracking-tight text-white mb-6 leading-none"
           >
-            SUBHAM MANDAL
+            SUBHAM <span className="font-light italic text-brand-accent">MANDAL</span>
           </motion.h1>
 
           {/* Sub-Title / Role with extreme weight contrasts */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center gap-3 justify-center mb-8 font-heading text-lg sm:text-2xl tracking-wide max-w-3xl"
+            className="flex flex-col sm:flex-row items-center gap-3 justify-center mb-10 font-heading text-lg sm:text-2xl tracking-wide max-w-3xl"
           >
             <span className="text-brand-accent font-extrabold flex items-center gap-2">
               <Code2 className="w-5 h-5 inline-block" /> FULL-STACK DEVELOPER
@@ -74,12 +139,12 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Tagline */}
+          {/* Tagline wrapping key words in HandDrawn components */}
           <motion.p
             variants={itemVariants}
-            className="font-sans font-light text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed mb-10"
+            className="font-sans font-light text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed mb-12"
           >
-            Bridging software and hardware to build high-performance digital experiences. Specializing in responsive web apps and robust embedded systems.
+            Bridging <HandDrawnLoop>software & hardware</HandDrawnLoop> to build <HandDrawnUnderline>high-performance</HandDrawnUnderline> digital experiences. Specializing in responsive web apps and robust embedded systems.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -114,7 +179,7 @@ export default function Hero() {
       >
         <span className="text-[10px] uppercase tracking-widest font-sans text-gray-500 font-light">Scroll Down</span>
         <div className="w-[1px] h-10 bg-brand-border relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1/2 bg-brand-accent animate-infinite-scroll" />
+          <div className="absolute top-0 left-0 w-full h-1/2 bg-brand-accent" />
         </div>
       </motion.div>
     </section>

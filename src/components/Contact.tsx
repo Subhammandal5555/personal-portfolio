@@ -44,7 +44,7 @@ export default function Contact() {
             Connectivity
           </span>
           <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight text-white mb-4">
-            GET IN <span className="font-light text-gray-400">TOUCH</span>
+            GET IN <span className="font-light italic text-brand-accent">TOUCH</span>
           </h2>
           <div className="w-12 h-[2px] bg-brand-accent" />
         </div>

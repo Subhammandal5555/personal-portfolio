@@ -28,7 +28,7 @@ export default function About() {
             Profile
           </span>
           <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight text-white mb-4">
-            ABOUT <span className="font-light text-gray-400">ME</span>
+            ABOUT <span className="font-light italic text-brand-accent">ME</span>
           </h2>
           <div className="w-12 h-[2px] bg-brand-accent" />
         </div>

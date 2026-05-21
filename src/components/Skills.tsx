@@ -59,7 +59,7 @@ export default function Skills() {
             Capabilities
           </span>
           <h2 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight text-white mb-4">
-            TECHNICAL <span className="font-light text-gray-400">STACK</span>
+            TECHNICAL <span className="font-light italic text-brand-accent">STACK</span>
           </h2>
           <div className="w-12 h-[2px] bg-brand-accent" />
         </div>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Mail, Send, MapPin, Phone } from "lucide-react";
+import { HandDrawnUnderline } from "@/components/HandDrawn";
 import { useState } from "react";
 
 export default function Contact() {
@@ -43,10 +44,11 @@ export default function Contact() {
           <span className="font-sans text-xs uppercase tracking-widest text-brand-accent font-medium mb-3 block">
             Connectivity
           </span>
-          <h2 className="font-marker font-normal text-3xl sm:text-5xl tracking-wide text-white mb-4">
-            Get In <span className="text-brand-accent">Touch</span>
+          <h2 className="mb-4">
+            <HandDrawnUnderline className="font-marker font-normal text-3xl sm:text-5xl tracking-wide text-white">
+              Get In <span className="text-brand-accent">Touch</span>
+            </HandDrawnUnderline>
           </h2>
-          <div className="w-12 h-[2px] bg-brand-accent" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">

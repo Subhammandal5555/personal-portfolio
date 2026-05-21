@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Award, BookOpen, GraduationCap, Cpu, Layers } from "lucide-react";
+import { HandDrawnUnderline } from "@/components/HandDrawn";
 
 export default function About() {
   const cardVariants = {
@@ -27,10 +28,11 @@ export default function About() {
           <span className="font-sans text-xs uppercase tracking-widest text-brand-accent font-medium mb-3 block">
             Profile
           </span>
-          <h2 className="font-marker font-normal text-3xl sm:text-5xl tracking-wide text-white mb-4">
-            About <span className="text-brand-accent">Me</span>
+          <h2 className="mb-4">
+            <HandDrawnUnderline className="font-marker font-normal text-3xl sm:text-5xl tracking-wide text-white">
+              About <span className="text-brand-accent">Me</span>
+            </HandDrawnUnderline>
           </h2>
-          <div className="w-12 h-[2px] bg-brand-accent" />
         </div>
 
         {/* Grid Content */}

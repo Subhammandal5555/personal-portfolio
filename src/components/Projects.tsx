@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink, Play, ArrowRight, Clock, ShieldAlert, Sparkles } from "lucide-react";
+import { HandDrawnUnderline } from "@/components/HandDrawn";
 import { useState, useEffect } from "react";
 
 export default function Projects() {
@@ -54,10 +55,11 @@ export default function Projects() {
           <span className="font-sans text-xs uppercase tracking-widest text-brand-accent font-medium mb-3 block">
             Portfolio
           </span>
-          <h2 className="font-marker font-normal text-3xl sm:text-5xl tracking-wide text-white mb-4">
-            Featured <span className="text-brand-accent">Projects</span>
+          <h2 className="mb-4">
+            <HandDrawnUnderline className="font-marker font-normal text-3xl sm:text-5xl tracking-wide text-white">
+              Featured <span className="text-brand-accent">Projects</span>
+            </HandDrawnUnderline>
           </h2>
-          <div className="w-12 h-[2px] bg-brand-accent" />
         </div>
 
         {/* Projects Grid Layout */}

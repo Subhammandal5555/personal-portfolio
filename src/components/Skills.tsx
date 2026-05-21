@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Code, Cpu, ShieldCheck } from "lucide-react";
+import { HandDrawnUnderline } from "@/components/HandDrawn";
 
 const skillCategories = [
   {
@@ -58,10 +59,11 @@ export default function Skills() {
           <span className="font-sans text-xs uppercase tracking-widest text-brand-accent font-medium mb-3 block">
             Capabilities
           </span>
-          <h2 className="font-marker font-normal text-3xl sm:text-5xl tracking-wide text-white mb-4">
-            Technical <span className="text-brand-accent">Stack</span>
+          <h2 className="mb-4">
+            <HandDrawnUnderline className="font-marker font-normal text-3xl sm:text-5xl tracking-wide text-white">
+              Core <span className="text-brand-accent">Skills</span>
+            </HandDrawnUnderline>
           </h2>
-          <div className="w-12 h-[2px] bg-brand-accent" />
         </div>
 
         {/* Tab Buttons */}

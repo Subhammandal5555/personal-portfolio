@@ -30,10 +30,16 @@ export function HandDrawnLoop({ children }: { children: React.ReactNode }) {
 }
 
 // Reusable hand-drawn fluid rough double underline component
-export function HandDrawnUnderline({ children }: { children: React.ReactNode }) {
+export function HandDrawnUnderline({ 
+  children, 
+  className = "font-extrabold text-white font-sans px-1" 
+}: { 
+  children: React.ReactNode; 
+  className?: string; 
+}) {
   return (
-    <span className="relative inline-block px-1">
-      <span className="relative z-10 font-extrabold text-white font-sans">{children}</span>
+    <span className="relative inline-block">
+      <span className={`relative z-10 ${className}`}>{children}</span>
       <svg
         className="absolute bottom-[-10px] left-0 w-full h-[14px] overflow-visible pointer-events-none"
         viewBox="0 0 100 10"

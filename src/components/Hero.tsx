@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Code2, Cpu } from "lucide-react";
-import { HandDrawnUnderline } from "@/components/HandDrawn";
+import { HandDrawnLoop, HandDrawnUnderline } from "@/components/HandDrawn";
 
 export default function Hero() {
   const containerVariants = {
@@ -80,7 +80,7 @@ export default function Hero() {
             variants={itemVariants}
             className="font-sans font-light text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed mb-12"
           >
-            Bridging <HandDrawnUnderline>software & hardware</HandDrawnUnderline> to build <HandDrawnUnderline>high-performance</HandDrawnUnderline> digital experiences. Specializing in responsive web apps and robust embedded systems.
+            Bridging <HandDrawnLoop>software & hardware</HandDrawnLoop> to build <HandDrawnUnderline>high-performance</HandDrawnUnderline> digital experiences. Specializing in responsive web apps and robust embedded systems.
           </motion.p>
 
           {/* CTA Buttons */}

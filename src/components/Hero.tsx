@@ -5,6 +5,24 @@ import { ArrowRight, Code2, Cpu } from "lucide-react";
 import { HandDrawnLoop, HandDrawnUnderline } from "@/components/HandDrawn";
 
 export default function Hero() {
+  const handleHeroClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const sectionId = href.substring(1);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+
+      window.history.pushState(null, "", `/${sectionId}`);
+    }
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -90,6 +108,7 @@ export default function Hero() {
           >
             <a
               href="#projects"
+              onClick={(e) => handleHeroClick(e, "#projects")}
               className="group relative font-sans text-sm font-semibold tracking-wider uppercase px-8 py-4 bg-brand-accent text-white rounded-sm transition-all duration-300 hover:shadow-[0_0_25px_rgba(135,90,123,0.5)] hover:-translate-y-0.5 flex items-center gap-2"
             >
               <span>Explore Work</span>
@@ -98,6 +117,7 @@ export default function Hero() {
             
             <a
               href="#contact"
+              onClick={(e) => handleHeroClick(e, "#contact")}
               className="font-sans text-sm font-medium tracking-wider uppercase px-8 py-4 border border-brand-border text-gray-300 rounded-sm hover:border-brand-accent hover:text-white bg-brand-card/25 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(135,90,123,0.15)] hover:-translate-y-0.5"
             >
               Get In Touch

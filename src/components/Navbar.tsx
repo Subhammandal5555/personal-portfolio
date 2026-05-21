@@ -17,6 +17,28 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
+  // Programmatic offset-aware smooth scrolling utility that updates history clean path
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const sectionId = href.substring(1);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+
+      // Update browser URL bar to a clean hashtag-free path
+      const cleanPath = sectionId === "home" ? "/" : `/${sectionId}`;
+      window.history.pushState(null, "", cleanPath);
+      setActiveSection(sectionId);
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -42,6 +64,26 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    // Handle clean URL direct hits/refreshes (e.g. /about or /skills) by scrolling on mount
+    const path = window.location.pathname.substring(1);
+    if (path && ["about", "skills", "projects", "contact"].includes(path)) {
+      setTimeout(() => {
+        const element = document.getElementById(path);
+        if (element) {
+          const offset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+          setActiveSection(path);
+        }
+      }, 500);
+    }
+  }, []);
+
   return (
     <motion.header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -55,7 +97,11 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Brand/Logo */}
-        <a href="#home" className="flex items-center gap-2 group">
+        <a 
+          href="#home" 
+          onClick={(e) => handleNavClick(e, "#home")}
+          className="flex items-center gap-2 group"
+        >
           <div className="w-10 h-10 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center transition-all duration-300 group-hover:border-brand-accent group-hover:shadow-[0_0_15px_rgba(135,90,123,0.3)]">
             <Cpu className="w-5 h-5 text-brand-accent transition-transform duration-500 group-hover:rotate-180" />
           </div>
@@ -72,6 +118,7 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="relative font-sans text-sm font-medium text-gray-400 hover:text-white transition-colors duration-300 tracking-wide"
               >
                 {link.name}
@@ -88,6 +135,7 @@ export default function Navbar() {
           
           <a
             href="#contact"
+            onClick={(e) => handleNavClick(e, "#contact")}
             className="font-sans text-xs uppercase tracking-widest px-4 py-2 border border-brand-accent text-brand-accent rounded-sm bg-brand-accent/5 hover:bg-brand-accent hover:text-white transition-all duration-300 hover:shadow-[0_0_15px_rgba(135,90,123,0.4)]"
           >
             Hire Me
@@ -117,7 +165,10 @@ export default function Navbar() {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    handleNavClick(e, link.href);
+                  }}
                   className={`font-sans text-base py-2 transition-colors duration-300 ${
                     activeSection === link.href.substring(1)
                       ? "text-brand-accent font-semibold"
@@ -129,7 +180,10 @@ export default function Navbar() {
               ))}
               <a
                 href="#contact"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  setIsOpen(false);
+                  handleNavClick(e, "#contact");
+                }}
                 className="w-full text-center font-sans text-xs uppercase tracking-widest py-3 border border-brand-accent text-brand-accent rounded-sm bg-brand-accent/5 hover:bg-brand-accent hover:text-white transition-all duration-300"
               >
                 Hire Me

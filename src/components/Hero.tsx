@@ -1,35 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight, Code2, Cpu } from "lucide-react";
 import { HandDrawnLoop, HandDrawnUnderline } from "@/components/HandDrawn";
 
 export default function Hero() {
-  const handleHeroClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const sectionId = href.substring(1);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-
-      // Local dev uses hashes to prevent 404s, Production Netlify uses clean paths
-      const isLocal = typeof window !== "undefined" && 
-        (window.location.hostname === "localhost" || 
-         window.location.hostname === "127.0.0.1" || 
-         window.location.port !== "");
-      
-      const cleanPath = isLocal ? `/#${sectionId}` : `/${sectionId}`;
-      window.history.pushState(null, "", cleanPath);
-    }
-  };
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -113,22 +89,20 @@ export default function Hero() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <a
-              href="#projects"
-              onClick={(e) => handleHeroClick(e, "#projects")}
+            <Link
+              href="/projects"
               className="group relative font-sans text-sm font-semibold tracking-wider uppercase px-8 py-4 bg-brand-accent text-white rounded-sm transition-all duration-300 hover:shadow-[0_0_25px_rgba(135,90,123,0.5)] hover:-translate-y-0.5 flex items-center gap-2"
             >
               <span>Explore Work</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+            </Link>
             
-            <a
-              href="#contact"
-              onClick={(e) => handleHeroClick(e, "#contact")}
+            <Link
+              href="/contact"
               className="font-sans text-sm font-medium tracking-wider uppercase px-8 py-4 border border-brand-border text-gray-300 rounded-sm hover:border-brand-accent hover:text-white bg-brand-card/25 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(135,90,123,0.15)] hover:-translate-y-0.5"
             >
               Get In Touch
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

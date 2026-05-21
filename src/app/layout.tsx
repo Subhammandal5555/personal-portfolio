@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Inter, Caveat } from "next/font/google";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -39,7 +41,11 @@ export default function RootLayout({
       className={`${outfit.variable} ${inter.variable} ${caveat.variable} h-full antialiased`}
     >
       <body className="bg-brand-bg text-foreground min-h-full flex flex-col font-sans selection:bg-brand-accent/30 selection:text-white">
-        {children}
+        <Navbar />
+        <main className="flex-1">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

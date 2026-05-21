@@ -187,48 +187,12 @@ export default function About() {
 
             <div className="relative pl-8 border-l border-brand-border/60 flex flex-col gap-8">
               
-              {/* Entry 1: Community Manager at GDSC CGEC */}
+              {/* Entry 1: Summer Research Intern at IIT BHU */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="relative p-6 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 group"
-              >
-                {/* Visual Connector Dot */}
-                <div className="absolute -left-[41px] top-7 w-4 h-4 rounded-full bg-brand-accent/80 border-4 border-brand-bg group-hover:scale-125 group-hover:bg-brand-accent transition-all duration-300 z-10" />
-
-                <div className="flex justify-between items-start gap-4 mb-3">
-                  <div>
-                    <h4 className="font-heading font-extrabold text-base sm:text-lg text-white">
-                      Community Manager
-                    </h4>
-                    <span className="font-sans text-xs text-brand-accent font-semibold">
-                      Google Developer Student Clubs (GDSC), CGEC
-                    </span>
-                  </div>
-                </div>
-
-                <p className="font-sans font-light text-sm text-gray-400 leading-relaxed mb-4">
-                  Led the local student developer community, organized technical workshops, and drove collaborative engineering projects focused on emerging technologies.
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-sans font-semibold bg-brand-accent/10 border border-brand-accent/30 text-brand-accent uppercase tracking-wider">
-                    Web Applications
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-sans font-semibold bg-brand-accent/10 border border-brand-accent/30 text-brand-accent uppercase tracking-wider">
-                    Management
-                  </span>
-                </div>
-              </motion.div>
-
-              {/* Entry 2: Summer Research Intern at IIT BHU */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
                 className="relative p-6 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 group"
               >
                 {/* Visual Connector Dot */}
@@ -258,6 +222,42 @@ export default function About() {
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full text-[10px] font-sans font-semibold bg-brand-accent/10 border border-brand-accent/30 text-brand-accent uppercase tracking-wider">
                     Hardware Architecture
+                  </span>
+                </div>
+              </motion.div>
+
+              {/* Entry 2: Community Manager at GDSC CGEC */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="relative p-6 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 group"
+              >
+                {/* Visual Connector Dot */}
+                <div className="absolute -left-[41px] top-7 w-4 h-4 rounded-full bg-brand-accent/80 border-4 border-brand-bg group-hover:scale-125 group-hover:bg-brand-accent transition-all duration-300 z-10" />
+
+                <div className="flex justify-between items-start gap-4 mb-3">
+                  <div>
+                    <h4 className="font-heading font-extrabold text-base sm:text-lg text-white">
+                      Community Manager
+                    </h4>
+                    <span className="font-sans text-xs text-brand-accent font-semibold">
+                      Google Developer Student Clubs (GDSC), CGEC
+                    </span>
+                  </div>
+                </div>
+
+                <p className="font-sans font-light text-sm text-gray-400 leading-relaxed mb-4">
+                  Led the local student developer community, organized technical workshops, and drove collaborative engineering projects focused on emerging technologies.
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-sans font-semibold bg-brand-accent/10 border border-brand-accent/30 text-brand-accent uppercase tracking-wider">
+                    Web Applications
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-sans font-semibold bg-brand-accent/10 border border-brand-accent/30 text-brand-accent uppercase tracking-wider">
+                    Management
                   </span>
                 </div>
               </motion.div>

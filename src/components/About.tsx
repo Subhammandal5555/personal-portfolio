@@ -54,8 +54,8 @@ export default function About() {
 
             {/* Core Values / Dual Discipline Row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
-              <div className="p-5 rounded-lg bg-brand-card border border-brand-border flex items-start gap-4">
-                <div className="p-3 rounded-md bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent">
+              <div className="p-5 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 hover:shadow-[0_0_15px_rgba(135,90,123,0.15)] transition-all duration-300 ease-in-out flex items-start gap-4 group">
+                <div className="p-3 rounded-md bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent group-hover:scale-105 transition-transform duration-300">
                   <Layers className="w-5 h-5" />
                 </div>
                 <div>
@@ -68,8 +68,8 @@ export default function About() {
                 </div>
               </div>
 
-              <div className="p-5 rounded-lg bg-brand-card border border-brand-border flex items-start gap-4">
-                <div className="p-3 rounded-md bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent">
+              <div className="p-5 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 hover:shadow-[0_0_15px_rgba(135,90,123,0.15)] transition-all duration-300 ease-in-out flex items-start gap-4 group">
+                <div className="p-3 rounded-md bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent group-hover:scale-105 transition-transform duration-300">
                   <Cpu className="w-5 h-5" />
                 </div>
                 <div>
@@ -94,14 +94,14 @@ export default function About() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="py-4 px-6 rounded-lg bg-brand-card border-2 border-brand-success shadow-[0_0_20px_rgba(36,161,72,0.15)] relative overflow-hidden"
+              className="py-4 px-6 rounded-lg bg-brand-card border-2 border-brand-success shadow-[0_0_20px_rgba(36,161,72,0.15)] hover:shadow-[0_0_25px_rgba(36,161,72,0.3)] hover:-translate-y-0.5 transition-all duration-300 ease-in-out relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-brand-success/5 rounded-bl-full pointer-events-none flex items-center justify-center">
-                <Award className="w-8 h-8 text-brand-success/30 translate-x-3 -translate-y-3" />
+                <Award className="w-8 h-8 text-brand-success/30 translate-x-3 -translate-y-3 group-hover:scale-110 transition-transform duration-300" />
               </div>
 
               <div className="flex items-center gap-3 mb-2.5">
-                <div className="p-2 rounded-md bg-brand-success/15 border border-brand-success/30 text-brand-success flex items-center justify-center">
+                <div className="p-2 rounded-md bg-brand-success/15 border border-brand-success/30 text-brand-success flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                   <Award className="w-5 h-5" />
                 </div>
                 <div>
@@ -126,9 +126,9 @@ export default function About() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="p-6 rounded-lg bg-brand-card border border-brand-border flex gap-4"
+              className="p-6 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 hover:shadow-[0_0_15px_rgba(135,90,123,0.15)] transition-all duration-300 ease-in-out flex gap-4 group"
             >
-              <div className="p-2.5 rounded-md bg-brand-accent/10 border border-brand-accent/20 text-brand-accent flex h-fit items-center justify-center">
+              <div className="p-2.5 rounded-md bg-brand-accent/10 border border-brand-accent/20 text-brand-accent flex h-fit items-center justify-center group-hover:scale-105 transition-transform duration-300">
                 <GraduationCap className="w-5 h-5" />
               </div>
               <div>
@@ -148,9 +148,9 @@ export default function About() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="p-6 rounded-lg bg-brand-card border border-brand-border grid grid-cols-2 gap-4"
+              className="p-6 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 hover:shadow-[0_0_15px_rgba(135,90,123,0.15)] transition-all duration-300 ease-in-out grid grid-cols-2 gap-4 group"
             >
-              <div className="text-center p-3 border-r border-brand-border">
+              <div className="text-center p-3 border-r border-brand-border group-hover:scale-[1.03] transition-transform duration-300">
                 <span className="block font-heading font-extrabold text-3xl text-brand-accent">
                   100%
                 </span>
@@ -158,7 +158,7 @@ export default function About() {
                   Commitment
                 </span>
               </div>
-              <div className="text-center p-3">
+              <div className="text-center p-3 group-hover:scale-[1.03] transition-transform duration-300">
                 <span className="block font-heading font-extrabold text-3xl text-brand-accent">
                   Dual
                 </span>

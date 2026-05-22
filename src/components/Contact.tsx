@@ -95,7 +95,7 @@ export default function Contact() {
               </span>
               <div className="flex gap-6 items-center">
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/-subham-mandal"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center text-gray-400 hover:text-[#0077B5] hover:border-[#0077B5]/50 hover:shadow-[0_0_15px_rgba(0,119,181,0.25)] transition-all duration-300 ease-in-out"
@@ -120,7 +120,7 @@ export default function Contact() {
                   </svg>
                 </a>
                 <a
-                  href="https://x.com"
+                  href="https://x.com/YourSubham_"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center text-gray-400 hover:text-slate-200 hover:border-slate-200/50 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-300 ease-in-out"

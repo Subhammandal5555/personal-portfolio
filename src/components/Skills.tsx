@@ -53,7 +53,7 @@ export default function Skills() {
   const [activeTab, setActiveTab] = useState("web");
 
   return (
-    <section id="skills" className="pt-16 pb-24 bg-brand-bg relative overflow-hidden scroll-mt-20">
+    <section id="skills" className="pt-12 pb-16 bg-brand-bg relative overflow-hidden scroll-mt-20">
       {/* Subtle backdrop flare */}
       <div className="absolute right-0 top-1/3 w-[300px] h-[300px] bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none" />
 

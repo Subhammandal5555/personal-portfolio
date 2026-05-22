@@ -98,7 +98,7 @@ export default function Contact() {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-[#0077B5] hover:drop-shadow-[0_0_10px_rgba(0,119,181,0.5)] transition-all duration-300 ease-in-out"
+                  className="w-12 h-12 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center text-gray-400 hover:text-[#0077B5] hover:border-[#0077B5]/50 hover:shadow-[0_0_15px_rgba(0,119,181,0.25)] transition-all duration-300 ease-in-out"
                   title="LinkedIn"
                 >
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -111,7 +111,7 @@ export default function Contact() {
                   href="https://github.com/Subhammandal5555"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transition-all duration-300 ease-in-out"
+                  className="w-12 h-12 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center text-gray-400 hover:text-white hover:border-white/50 hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] transition-all duration-300 ease-in-out"
                   title="GitHub"
                 >
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -123,7 +123,7 @@ export default function Contact() {
                   href="https://x.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-slate-200 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.4)] transition-all duration-300 ease-in-out"
+                  className="w-12 h-12 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center text-gray-400 hover:text-slate-200 hover:border-slate-200/50 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-300 ease-in-out"
                   title="Twitter (X)"
                 >
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">

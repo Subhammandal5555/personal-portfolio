@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Subham Mandal" }],
   creator: "Subham Mandal",
   icons: {
-    icon: "/favicon.png",
-  },
+    icon: '/favicon.png',
+  }
 };
 
 export default function RootLayout({

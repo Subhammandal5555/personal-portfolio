@@ -110,8 +110,34 @@ export default function Skills() {
                     {category.skills.map((skill, index) => (
                       <div
                         key={skill.name}
-                        className="p-6 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(135,90,123,0.1)] group"
+                        className="relative p-6 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(135,90,123,0.1)] group"
                       >
+                        {/* High-tech animated SVG border tracer on hover */}
+                        <div className="absolute inset-0 rounded-lg pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <svg className="absolute inset-0 w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                              <linearGradient id="neon-glow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor="#875A7B" />
+                                <stop offset="35%" stopColor="#875A7B" />
+                                <stop offset="50%" stopColor="#FFFFFF" />
+                                <stop offset="65%" stopColor="#875A7B" />
+                                <stop offset="100%" stopColor="#875A7B" />
+                              </linearGradient>
+                            </defs>
+                            <rect
+                              x="0"
+                              y="0"
+                              width="100%"
+                              height="100%"
+                              rx="8"
+                              stroke="url(#neon-glow-grad)"
+                              strokeWidth="2"
+                              strokeDasharray="100 200"
+                              className="animate-border-pulse"
+                            />
+                          </svg>
+                        </div>
+
                         <div className="flex justify-between items-center mb-3">
                           <span className="font-sans font-semibold text-sm sm:text-base text-white tracking-wide group-hover:text-brand-accent transition-colors duration-300">
                             {skill.name}

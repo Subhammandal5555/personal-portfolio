@@ -48,3 +48,17 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes border-pulse {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@utility animate-border-pulse {
+  animation: border-pulse 4s linear infinite;
+}
+

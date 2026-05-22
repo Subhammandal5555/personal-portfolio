@@ -200,6 +200,15 @@ export default function Navbar() {
             );
           })}
           
+          <a
+            href="/CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-sans text-xs uppercase tracking-widest px-4 py-2 border border-brand-border text-gray-400 rounded-sm hover:border-brand-accent/50 hover:text-brand-accent transition-all duration-300 hover:shadow-[0_0_15px_rgba(135,90,123,0.2)] bg-brand-card/20"
+          >
+            View CV
+          </a>
+          
           <Link
             href="/contact"
             onClick={(e) => handleNavClick(e, "/contact", "contact")}
@@ -242,6 +251,14 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
+              <a
+                href="/CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center font-sans text-xs uppercase tracking-widest py-3 border border-brand-border text-gray-300 rounded-sm bg-brand-card/20 hover:border-brand-accent/50 hover:text-brand-accent transition-all duration-300"
+              >
+                View CV
+              </a>
               <Link
                 href="/contact"
                 onClick={(e) => handleNavClick(e, "/contact", "contact")}

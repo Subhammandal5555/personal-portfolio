@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Code2, Cpu } from "lucide-react";
+import { ArrowRight, Code2, Cpu, Eye, Download } from "lucide-react";
 import { HandDrawnLoop, HandDrawnUnderline } from "@/components/HandDrawn";
 
 export default function Hero() {
@@ -102,10 +102,10 @@ export default function Hero() {
             Bridging <HandDrawnLoop>software & hardware</HandDrawnLoop> to build <HandDrawnUnderline>high-performance</HandDrawnUnderline> digital experiences. Specializing in responsive web apps and robust embedded systems.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* Main CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6"
           >
             <Link
               href="/projects"
@@ -123,6 +123,31 @@ export default function Hero() {
             >
               Get In Touch
             </Link>
+          </motion.div>
+
+          {/* CV Actions Row */}
+          <motion.div
+            variants={itemVariants}
+            className="flex gap-4 justify-center items-center"
+          >
+            <a
+              href="/CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group font-sans text-xs font-semibold tracking-wider uppercase px-5 py-3 border border-brand-border text-gray-400 rounded-sm hover:border-brand-accent/50 hover:text-white bg-brand-card/15 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_15px_rgba(135,90,123,0.1)] hover:-translate-y-0.5 flex items-center gap-2"
+            >
+              <Eye className="w-3.5 h-3.5 text-gray-400 group-hover:text-brand-accent transition-colors duration-300" />
+              <span>View CV</span>
+            </a>
+
+            <a
+              href="/CV.pdf"
+              download="Subham_Mandal_CV.pdf"
+              className="group font-sans text-xs font-semibold tracking-wider uppercase px-5 py-3 border border-brand-accent/30 text-brand-accent rounded-sm hover:bg-brand-accent hover:text-white bg-brand-accent/5 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_15px_rgba(135,90,123,0.25)] hover:-translate-y-0.5 flex items-center gap-2"
+            >
+              <Download className="w-3.5 h-3.5 text-brand-accent group-hover:text-white transition-colors duration-300" />
+              <span>Download CV</span>
+            </a>
           </motion.div>
         </motion.div>
       </div>

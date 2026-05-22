@@ -5,8 +5,16 @@ import { Mail, Send, MapPin, Phone } from "lucide-react";
 import { HandDrawnUnderline } from "@/components/HandDrawn";
 import { useState } from "react";
 
+const encodedEmail = "Y29udGFjdEBzdWJoYW1tYW5kYWwuaW4=";
+
 export default function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const decoded = atob(encodedEmail);
+    window.location.href = `mailto:${decoded}`;
+  };
 
   // Netlify form handler simulation for React client safety
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -71,10 +79,10 @@ export default function Contact() {
                   <div>
                     <span className="block text-[9px] uppercase tracking-wider text-gray-400 font-light">Email Address</span>
                     <a 
-                      href="mailto:contact@subhammandal.in" 
-                      className="text-white hover:text-brand-accent transition-colors duration-200"
+                      onClick={handleEmailClick} 
+                      className="text-white hover:text-brand-accent transition-colors duration-200 cursor-pointer"
                     >
-                      contact@subhammandal.in
+                      contact [at] subhammandal [dot] in
                     </a>
                   </div>
                 </div>

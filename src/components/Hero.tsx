@@ -47,7 +47,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-brand-bg scroll-mt-20"
+      className="relative min-h-screen flex flex-col justify-between items-center pt-28 pb-8 overflow-hidden bg-brand-bg scroll-mt-20"
     >
       {/* Background Decorative Mesh Glows */}
       <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] rounded-full bg-brand-accent/10 blur-[100px] pointer-events-none animate-pulse duration-[6s]" />
@@ -56,7 +56,7 @@ export default function Hero() {
       {/* Grid Pattern overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#262E3B0d_1px,transparent_1px),linear-gradient(to_bottom,#262E3B0d_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full text-center">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full flex-grow flex flex-col justify-center items-center text-center">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -125,25 +125,27 @@ export default function Hero() {
             </Link>
           </motion.div>
 
-          {/* CV Actions Row */}
+          {/* Beautiful Glassmorphic CV Pill */}
           <motion.div
             variants={itemVariants}
-            className="flex gap-4 justify-center items-center"
+            className="flex items-center gap-1 p-1 rounded-full border border-brand-border bg-brand-card/20 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:border-brand-accent/30 hover:shadow-[0_0_20px_rgba(135,90,123,0.1)] transition-all duration-500"
           >
             <a
               href="/CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group font-sans text-xs font-semibold tracking-wider uppercase px-5 py-3 border border-brand-border text-gray-400 rounded-sm hover:border-brand-accent/50 hover:text-white bg-brand-card/15 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_15px_rgba(135,90,123,0.1)] hover:-translate-y-0.5 flex items-center gap-2"
+              className="group flex items-center gap-2 px-4 py-2 rounded-full font-sans text-xs font-semibold tracking-wider text-gray-400 hover:text-white hover:bg-white/5 transition-all duration-300"
             >
               <Eye className="w-3.5 h-3.5 text-gray-400 group-hover:text-brand-accent transition-colors duration-300" />
               <span>View CV</span>
             </a>
 
+            <div className="h-4 w-[1px] bg-brand-border/50" />
+
             <a
               href="/CV.pdf"
               download="Subham_Mandal_CV.pdf"
-              className="group font-sans text-xs font-semibold tracking-wider uppercase px-5 py-3 border border-brand-accent/30 text-brand-accent rounded-sm hover:bg-brand-accent hover:text-white bg-brand-accent/5 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_15px_rgba(135,90,123,0.25)] hover:-translate-y-0.5 flex items-center gap-2"
+              className="group flex items-center gap-2 px-4 py-2 rounded-full font-sans text-xs font-semibold tracking-wider text-brand-accent hover:text-white hover:bg-brand-accent/80 transition-all duration-300"
             >
               <Download className="w-3.5 h-3.5 text-brand-accent group-hover:text-white transition-colors duration-300" />
               <span>Download CV</span>
@@ -154,7 +156,7 @@ export default function Hero() {
 
       {/* Elegant Bottom Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50"
+        className="relative z-20 flex flex-col items-center gap-2 opacity-50 mt-auto pb-4 pointer-events-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.5, y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}

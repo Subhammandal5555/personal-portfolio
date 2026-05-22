@@ -39,10 +39,12 @@ const skillCategories = [
     title: "Software & Tools",
     icon: ShieldCheck,
     skills: [
-      { name: "Git", level: 85 },
-      { name: "GitHub", level: 90 },
-      { name: "Systems Design", level: 80 },
+      { name: "VS Code & Cursor", level: 95 },
+      { name: "Git & GitHub", level: 90 },
+      { name: "Postman (API Testing)", level: 85 },
       { name: "Debugging & Testing", level: 85 },
+      { name: "Systems Design & Architecture", level: 80 },
+      { name: "Linux & Bash Terminal", level: 80 },
     ],
   },
 ];

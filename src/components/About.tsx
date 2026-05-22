@@ -36,7 +36,7 @@ export default function About() {
         </div>
 
         {/* Grid Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:items-stretch items-start">
           
           {/* Left Bio Details (takes 7 columns) */}
           <div className="lg:col-span-7 flex flex-col gap-6">
@@ -85,7 +85,7 @@ export default function About() {
           </div>
 
           {/* Right Highlights Grid (takes 5 columns) */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
+          <div className="lg:col-span-5 flex flex-col gap-6 lg:justify-between lg:h-full">
             
             {/* GATE 2026 Academic Qualification Card (Framed in Emerald #24A148) */}
             <motion.div
@@ -94,15 +94,15 @@ export default function About() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="p-6 rounded-lg bg-brand-card border-2 border-brand-success shadow-[0_0_20px_rgba(36,161,72,0.15)] relative overflow-hidden"
+              className="py-4 px-6 rounded-lg bg-brand-card border-2 border-brand-success shadow-[0_0_20px_rgba(36,161,72,0.15)] relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-brand-success/5 rounded-bl-full pointer-events-none flex items-center justify-center">
                 <Award className="w-8 h-8 text-brand-success/30 translate-x-3 -translate-y-3" />
               </div>
 
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2.5 rounded-md bg-brand-success/15 border border-brand-success/30 text-brand-success flex items-center justify-center">
-                  <Award className="w-6 h-6" />
+              <div className="flex items-center gap-3 mb-2.5">
+                <div className="p-2 rounded-md bg-brand-success/15 border border-brand-success/30 text-brand-success flex items-center justify-center">
+                  <Award className="w-5 h-5" />
                 </div>
                 <div>
                   <span className="font-sans text-[10px] uppercase tracking-widest text-brand-success font-semibold">

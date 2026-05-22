@@ -11,8 +11,8 @@ export default function Contact() {
 
   useEffect(() => {
     // Obfuscate by splitting parts to defeat static HTML crawlers
-    const user = "subhammandal5555";
-    const domain = "gmail.com";
+    const user = "contact";
+    const domain = "subhammandal.in";
     setEmail(`${user}@${domain}`);
   }, []);
 
@@ -82,7 +82,7 @@ export default function Contact() {
                       href={email ? `mailto:${email}` : "#"} 
                       className="text-white hover:text-brand-accent transition-colors duration-200"
                     >
-                      {email || "subhammandal5555 [at] gmail [dot] com"}
+                      {email || "contact [at] subhammandal [dot] in"}
                     </a>
                   </div>
                 </div>

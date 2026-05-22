@@ -63,7 +63,7 @@ export default function About() {
                     Web Architectures
                   </h4>
                   <p className="font-sans font-light text-xs text-gray-400 leading-relaxed">
-                    Crafting highly responsive web systems, optimized state logic, and modern UX flows using Node.js, Express, and Next.js.
+                    Building high-performance systems from the ground up using Next.js & Node.js, optimized for Core Web Vitals, maximum speed, SEO optimization, and clean page ranking.
                   </p>
                 </div>
               </div>

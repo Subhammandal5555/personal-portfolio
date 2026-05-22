@@ -3,18 +3,10 @@
 import { motion } from "framer-motion";
 import { Mail, Send, MapPin, Phone } from "lucide-react";
 import { HandDrawnUnderline } from "@/components/HandDrawn";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [email, setEmail] = useState("");
-
-  useEffect(() => {
-    // Obfuscate by splitting parts to defeat static HTML crawlers
-    const user = "contact";
-    const domain = "subhammandal.in";
-    setEmail(`${user}@${domain}`);
-  }, []);
 
   // Netlify form handler simulation for React client safety
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -79,10 +71,10 @@ export default function Contact() {
                   <div>
                     <span className="block text-[9px] uppercase tracking-wider text-gray-400 font-light">Email Address</span>
                     <a 
-                      href={email ? `mailto:${email}` : "#"} 
+                      href="mailto:contact@subhammandal.in" 
                       className="text-white hover:text-brand-accent transition-colors duration-200"
                     >
-                      {email || "contact [at] subhammandal [dot] in"}
+                      contact@subhammandal.in
                     </a>
                   </div>
                 </div>

@@ -89,7 +89,7 @@ export default function Contact() {
             </div>
 
             {/* Social Channels Container */}
-            <div className="mt-8 lg:mt-0">
+            <div className="mt-12">
               <span className="block font-sans text-[10px] uppercase tracking-widest text-gray-500 font-light mb-4">
                 Social Networks & Channels
               </span>

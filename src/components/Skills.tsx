@@ -26,11 +26,12 @@ const skillCategories = [
     title: "Embedded & IoT",
     icon: Cpu,
     skills: [
-      { name: "C Language", level: 88 },
+      { name: "C / C++ (Embedded)", level: 88 },
       { name: "Embedded Systems", level: 80 },
       { name: "TI C2000 Platforms", level: 75 },
       { name: "Code Composer Studio (CCS)", level: 75 },
-      { name: "MATLAB", level: 70 },
+      { name: "Microcontrollers & Protocols", level: 75 },
+      { name: "MATLAB & Simulink", level: 70 },
     ],
   },
   {

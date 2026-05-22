@@ -33,7 +33,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-brand-bg relative overflow-hidden">
+    <section id="contact" className="pt-16 pb-24 bg-brand-bg relative overflow-hidden scroll-mt-20">
       {/* Decorative ambient flare */}
       <div className="absolute left-0 bottom-0 w-[400px] h-[400px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none" />
 

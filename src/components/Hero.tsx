@@ -47,7 +47,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-brand-bg"
+      className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-brand-bg scroll-mt-20"
     >
       {/* Background Decorative Mesh Glows */}
       <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] rounded-full bg-brand-accent/10 blur-[100px] pointer-events-none animate-pulse duration-[6s]" />

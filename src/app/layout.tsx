@@ -28,6 +28,9 @@ export const metadata: Metadata = {
   keywords: ["Subham Mandal", "Full-Stack Developer", "Electronics Engineer", "ECE Portfolio", "GATE 2026", "Next.js", "Framer Motion", "Embedded Systems", "TI C2000"],
   authors: [{ name: "Subham Mandal" }],
   creator: "Subham Mandal",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

@@ -235,34 +235,35 @@ export default function Projects() {
                 {project.id === "simon" && (
                   <>
                     {/* Interactive Simon Game visualizer */}
-                    <div className="bg-brand-card border border-brand-border rounded-full w-36 h-36 p-3 flex flex-wrap gap-2.5 relative justify-center items-center shadow-lg relative z-10">
-                      {/* 4 Colored sectors */}
-                      <div
-                        className={`w-14 h-14 rounded-tl-full transition-all duration-200 cursor-pointer ${
-                          simonColor === "green" ? "bg-green-400 scale-95 shadow-[0_0_15px_rgba(74,222,128,0.7)]" : "bg-green-700/60"
-                        }`}
-                        onClick={playSimonStep}
-                      />
-                      <div
-                        className={`w-14 h-14 rounded-tr-full transition-all duration-200 cursor-pointer ${
-                          simonColor === "red" ? "bg-red-400 scale-95 shadow-[0_0_15px_rgba(248,113,113,0.7)]" : "bg-red-700/60"
-                        }`}
-                        onClick={playSimonStep}
-                      />
-                      <div
-                        className={`w-14 h-14 rounded-bl-full transition-all duration-200 cursor-pointer ${
-                          simonColor === "yellow" ? "bg-yellow-400 scale-95 shadow-[0_0_15px_rgba(250,204,21,0.7)]" : "bg-yellow-700/60"
-                        }`}
-                        onClick={playSimonStep}
-                      />
-                      <div
-                        className={`w-14 h-14 rounded-br-full transition-all duration-200 cursor-pointer ${
-                          simonColor === "blue" ? "bg-blue-400 scale-95 shadow-[0_0_15px_rgba(96,165,250,0.7)]" : "bg-blue-700/60"
-                        }`}
-                        onClick={playSimonStep}
-                      />
+                    <div className="bg-brand-card border border-brand-border rounded-full w-32 h-32 p-2 relative flex items-center justify-center shadow-lg relative z-10 scale-[0.95] md:scale-[1.0] transition-transform duration-300">
+                      <div className="grid grid-cols-2 gap-1.5 w-full h-full">
+                        <div
+                          className={`w-full h-full rounded-tl-full transition-all duration-200 cursor-pointer ${
+                            simonColor === "green" ? "bg-green-400 scale-95 shadow-[0_0_15px_rgba(74,222,128,0.7)]" : "bg-green-700/60"
+                          }`}
+                          onClick={playSimonStep}
+                        />
+                        <div
+                          className={`w-full h-full rounded-tr-full transition-all duration-200 cursor-pointer ${
+                            simonColor === "red" ? "bg-red-400 scale-95 shadow-[0_0_15px_rgba(248,113,113,0.7)]" : "bg-red-700/60"
+                          }`}
+                          onClick={playSimonStep}
+                        />
+                        <div
+                          className={`w-full h-full rounded-bl-full transition-all duration-200 cursor-pointer ${
+                            simonColor === "yellow" ? "bg-yellow-400 scale-95 shadow-[0_0_15px_rgba(250,204,21,0.7)]" : "bg-yellow-700/60"
+                          }`}
+                          onClick={playSimonStep}
+                        />
+                        <div
+                          className={`w-full h-full rounded-br-full transition-all duration-200 cursor-pointer ${
+                            simonColor === "blue" ? "bg-blue-400 scale-95 shadow-[0_0_15px_rgba(96,165,250,0.7)]" : "bg-blue-700/60"
+                          }`}
+                          onClick={playSimonStep}
+                        />
+                      </div>
                       {/* Center Core */}
-                      <div className="absolute w-12 h-12 rounded-full bg-brand-bg border border-brand-border flex items-center justify-center text-[7px] uppercase font-bold text-gray-400 text-center select-none shadow-md cursor-pointer hover:border-brand-accent transition-colors duration-200" onClick={playSimonStep}>
+                      <div className="absolute w-10 h-10 rounded-full bg-brand-bg border border-brand-border flex items-center justify-center text-[7px] uppercase font-bold text-gray-400 text-center select-none shadow-md cursor-pointer hover:border-brand-accent transition-colors duration-200" onClick={playSimonStep}>
                         {simonColor ? "Active" : "Tap"}
                       </div>
                     </div>

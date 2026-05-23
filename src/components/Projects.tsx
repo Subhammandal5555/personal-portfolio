@@ -17,6 +17,17 @@ const projectsData = [
     codebase: "",
   },
   {
+    id: "edge-ai",
+    title: "Edge-AI Assisted Fault Diagnosis of a DSP-Controlled DC-DC Buck Converter",
+    badge: "R&D",
+    badgeType: "accent",
+    description: "An intelligent monitoring framework for a DC-DC buck converter prototype. Leverages a TI F28379D DSP for closed-loop real-time PWM control and data telemetry, alongside a Raspberry Pi data logging system designed for explainable ML fault classification (SVM, Random Forest) based on electrical and thermal signatures.",
+    tags: ["TI F28379D DSP", "Embedded C", "Raspberry Pi", "Scikit-Learn", "MATLAB", "UART"],
+    liveUrl: "/FINAL_YEAR_PROJECT.pdf",
+    liveLabel: "See The Report",
+    codebase: "",
+  },
+  {
     id: "simon",
     title: "Simon Logic Game",
     badge: "Interactive",
@@ -96,7 +107,7 @@ export default function Projects() {
         </div>
 
         {/* Projects Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projectsData.map((project, idx) => (
             <motion.div
               key={project.id}
@@ -146,6 +157,46 @@ export default function Projects() {
                       <span className="text-[8px] text-brand-accent font-extrabold font-heading">UPI ENABLED</span>
                     </div>
                   </>
+                )}
+
+                {project.id === "edge-ai" && (
+                  <div className="bg-[#0c1017] border border-brand-border/60 rounded-md p-4 w-full max-w-[270px] shadow-lg relative z-10 flex flex-col gap-2 font-mono text-[9px] text-gray-400">
+                    <div className="flex justify-between items-center border-b border-brand-border/40 pb-1.5">
+                      <span className="text-[8px] text-brand-accent font-extrabold uppercase tracking-wider">DSP Telemetry</span>
+                      <span className="flex items-center gap-1.5">
+                        <span className="h-1.5 w-1.5 rounded-full bg-brand-success animate-pulse" />
+                        <span className="text-[8px] text-gray-500 font-light">UART LIVE</span>
+                      </span>
+                    </div>
+                    {/* Live Converter Metrics */}
+                    <div className="grid grid-cols-3 gap-1.5 text-center text-white py-1">
+                      <div className="bg-brand-bg/80 border border-brand-border/30 p-1 rounded-sm">
+                        <span className="block text-[7px] text-gray-400 uppercase font-sans">Voltage</span>
+                        <span className="block font-heading font-extrabold text-[10px] text-brand-accent">5.04 V</span>
+                      </div>
+                      <div className="bg-brand-bg/80 border border-brand-border/30 p-1 rounded-sm">
+                        <span className="block text-[7px] text-gray-400 uppercase font-sans">Current</span>
+                        <span className="block font-heading font-extrabold text-[10px] text-white">2.08 A</span>
+                      </div>
+                      <div className="bg-brand-bg/80 border border-brand-border/30 p-1 rounded-sm">
+                        <span className="block text-[7px] text-gray-400 uppercase font-sans">PWM Duty</span>
+                        <span className="block font-heading font-extrabold text-[10px] text-gray-300">42.8%</span>
+                      </div>
+                    </div>
+                    {/* ML Diagnostics */}
+                    <div className="mt-1 bg-brand-bg/60 border border-brand-border/40 p-2 rounded-sm flex flex-col gap-1">
+                      <div className="flex justify-between items-center">
+                        <span className="text-[8px] text-gray-500 uppercase font-sans font-light">Edge ML Model</span>
+                        <span className="text-[8px] text-brand-success font-semibold">SVM (Active)</span>
+                      </div>
+                      <div className="flex justify-between items-center text-white">
+                        <span className="text-[8px] text-gray-400">Diagnosis State</span>
+                        <span className="text-[8px] bg-brand-success/15 border border-brand-success/30 px-1.5 py-0.5 rounded-sm text-brand-success font-extrabold tracking-wider">
+                          HEALTHY
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 )}
 
                 {project.id === "spotify" && (
@@ -264,7 +315,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="font-sans text-xs uppercase tracking-widest font-semibold text-white hover:text-brand-accent flex items-center gap-1.5 transition-colors duration-300"
                     >
-                      <span>Visit Live</span>
+                      <span>{project.liveLabel || "Visit Live"}</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   )}

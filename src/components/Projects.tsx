@@ -17,16 +17,6 @@ const projectsData = [
     codebase: "",
   },
   {
-    id: "spotify",
-    title: "Spotify Frontend",
-    badge: "Architecture",
-    badgeType: "standard",
-    description: "A high-fidelity frontend clone of the Spotify music streaming web client built to pixel-perfect design accuracy. Fully responsive layout mirroring standard desktop viewports.",
-    tags: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "Flexbox"],
-    liveUrl: "https://spotify-clone-subham.netlify.app",
-    codebase: "https://github.com/Subhammandal5555",
-  },
-  {
     id: "simon",
     title: "Simon Logic Game",
     badge: "Interactive",
@@ -34,6 +24,16 @@ const projectsData = [
     description: "A responsive logic-based pattern game built with custom interactive scripts, fluid event handlers, and structured keyframes simulating hardware game systems.",
     tags: ["HTML5", "CSS3", "JavaScript", "Event Handlers", "Audio Context"],
     liveUrl: "https://simon-subham.netlify.app",
+    codebase: "https://github.com/Subhammandal5555",
+  },
+  {
+    id: "spotify",
+    title: "Spotify Frontend",
+    badge: "Architecture",
+    badgeType: "standard",
+    description: "A high-fidelity frontend clone of the Spotify music streaming web client built to pixel-perfect design accuracy. Fully responsive layout mirroring standard desktop viewports.",
+    tags: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "Flexbox"],
+    liveUrl: "https://spotify-clone-subham.netlify.app",
     codebase: "https://github.com/Subhammandal5555",
   }
 ];

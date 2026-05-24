@@ -17,7 +17,7 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("/");
+  const [activeSection, setActiveSection] = useState("home");
   const [isMounted, setIsMounted] = useState(false);
   const pathname = usePathname();
   const isScrollingRef = useRef(false);
@@ -48,7 +48,7 @@ export default function Navbar() {
       const element = document.getElementById(sectionId);
       if (element) {
         isScrollingRef.current = true;
-        setActiveSection(path);
+        setActiveSection(sectionId);
         const timer = setTimeout(() => {
           const elementPosition = element.getBoundingClientRect().top + window.scrollY;
           const offsetPosition = elementPosition - 80; // 80px sticky offset
@@ -63,7 +63,7 @@ export default function Navbar() {
         return () => clearTimeout(timer);
       }
     } else {
-      setActiveSection("/");
+      setActiveSection("home");
     }
   }, []);
 
@@ -75,7 +75,7 @@ export default function Navbar() {
       const element = document.getElementById(sectionId);
       if (element) {
         isScrollingRef.current = true;
-        setActiveSection(path);
+        setActiveSection(sectionId);
         const elementPosition = element.getBoundingClientRect().top + window.scrollY;
         const offsetPosition = elementPosition - 80;
         window.scrollTo({
@@ -86,7 +86,7 @@ export default function Navbar() {
           isScrollingRef.current = false;
         }, 800);
       } else {
-        setActiveSection(path);
+        setActiveSection(sectionId);
       }
     };
 
@@ -94,12 +94,12 @@ export default function Navbar() {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  // IntersectionObserver to update URL dynamically as user scrolls
+  // IntersectionObserver to update activeSection and URL dynamically on scroll
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-40% 0px -50% 0px", // triggers when element is centered in viewport
-      threshold: 0,
+      rootMargin: "0px",
+      threshold: 0.45, // Triggers when section occupies roughly half the screen
     };
 
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
@@ -108,9 +108,9 @@ export default function Navbar() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const id = entry.target.id;
-          const path = id === "home" ? "/" : `/${id}`;
-          setActiveSection(path);
+          setActiveSection(id);
           
+          const path = id === "home" ? "/" : `/${id}`;
           if (window.location.pathname !== path) {
             window.history.replaceState(null, "", path);
           }
@@ -136,7 +136,7 @@ export default function Navbar() {
     e.preventDefault();
     
     isScrollingRef.current = true;
-    setActiveSection(href);
+    setActiveSection(sectionId);
     
     if (window.location.pathname !== href) {
       window.history.pushState(null, "", href);
@@ -189,7 +189,7 @@ export default function Navbar() {
         {/* Desktop Nav Links */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => {
-            const isActive = activeSection === link.href;
+            const isActive = activeSection === link.id;
             return (
               <Link
                 key={link.name}
@@ -201,7 +201,7 @@ export default function Navbar() {
                 {isActive && (
                   <motion.span
                     className="absolute -bottom-1.5 left-0 w-full h-[2px] bg-brand-accent"
-                    layoutId="activeNavIndicator"
+                    layoutId="activeUnderline"
                     transition={
                       isMounted
                         ? { type: "spring", stiffness: 380, damping: 30 }
@@ -256,7 +256,7 @@ export default function Navbar() {
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href, link.id)}
                   className={`font-sans text-base py-2 transition-colors duration-300 ${
-                    activeSection === link.href
+                    activeSection === link.id
                       ? "text-brand-accent font-semibold"
                       : "text-gray-400 hover:text-white"
                   }`}

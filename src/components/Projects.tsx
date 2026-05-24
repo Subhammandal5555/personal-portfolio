@@ -99,11 +99,20 @@ export default function Projects() {
           <span className="font-sans text-xs uppercase tracking-widest text-brand-accent font-medium mb-3 block">
             Portfolio
           </span>
-          <h2 className="mb-4">
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+            }}
+            className="mb-4"
+          >
             <HandDrawnUnderline className="font-marker font-normal text-3xl sm:text-5xl tracking-wide text-white">
               Featured <span className="text-brand-accent">Projects</span>
             </HandDrawnUnderline>
-          </h2>
+          </motion.h2>
         </div>
 
         {/* Projects Grid Layout */}
@@ -113,7 +122,7 @@ export default function Projects() {
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 flex flex-col justify-between overflow-hidden group hover:shadow-[0_0_25px_rgba(135,90,123,0.15)]"
             >

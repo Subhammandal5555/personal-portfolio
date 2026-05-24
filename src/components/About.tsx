@@ -28,11 +28,20 @@ export default function About() {
           <span className="font-sans text-xs uppercase tracking-widest text-brand-accent font-medium mb-3 block">
             Profile
           </span>
-          <h2 className="mb-4">
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+            }}
+            className="mb-4"
+          >
             <HandDrawnUnderline className="font-marker font-normal text-3xl sm:text-5xl tracking-wide text-white">
               About <span className="text-brand-accent">Me</span>
             </HandDrawnUnderline>
-          </h2>
+          </motion.h2>
         </div>
 
         {/* Grid Content */}
@@ -93,7 +102,7 @@ export default function About() {
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               className="py-4 px-6 rounded-lg bg-brand-card border-2 border-brand-success shadow-[0_0_20px_rgba(36,161,72,0.15)] hover:shadow-[0_0_25px_rgba(36,161,72,0.3)] hover:-translate-y-0.5 transition-all duration-300 ease-in-out relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-brand-success/5 rounded-bl-full pointer-events-none flex items-center justify-center">
@@ -125,7 +134,7 @@ export default function About() {
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               className="p-6 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 hover:shadow-[0_0_15px_rgba(135,90,123,0.15)] transition-all duration-300 ease-in-out flex gap-4 group"
             >
               <div className="p-2.5 rounded-md bg-brand-accent/10 border border-brand-accent/20 text-brand-accent flex h-fit items-center justify-center group-hover:scale-105 transition-transform duration-300">
@@ -147,7 +156,7 @@ export default function About() {
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               className="p-6 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 hover:shadow-[0_0_15px_rgba(135,90,123,0.15)] transition-all duration-300 ease-in-out grid grid-cols-2 gap-4 group"
             >
               <div className="text-center p-3 border-r border-brand-border group-hover:scale-[1.03] transition-transform duration-300">
@@ -178,11 +187,20 @@ export default function About() {
           {/* Experience Timeline Column */}
           <div>
             <div className="mb-12">
-              <h3 className="mb-4">
+              <motion.h3
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                }}
+                className="mb-4"
+              >
                 <HandDrawnUnderline className="font-marker font-normal text-2xl sm:text-4xl tracking-wide text-white">
                   Experience
                 </HandDrawnUnderline>
-              </h3>
+              </motion.h3>
             </div>
 
             <div className="relative pl-8 border-l border-brand-border/60 flex flex-col gap-8">
@@ -191,7 +209,7 @@ export default function About() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5 }}
                 className="relative p-6 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 group"
               >
@@ -230,7 +248,7 @@ export default function About() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="relative p-6 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 group"
               >
@@ -268,11 +286,20 @@ export default function About() {
           {/* Education Timeline Column */}
           <div>
             <div className="mb-12">
-              <h3 className="mb-4">
+              <motion.h3
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                }}
+                className="mb-4"
+              >
                 <HandDrawnUnderline className="font-marker font-normal text-2xl sm:text-4xl tracking-wide text-white">
                   Education
                 </HandDrawnUnderline>
-              </h3>
+              </motion.h3>
             </div>
 
             <div className="relative pl-8 border-l border-brand-border/60 flex flex-col gap-8">
@@ -281,7 +308,7 @@ export default function About() {
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5 }}
                 className="relative p-6 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 group"
               >
@@ -314,7 +341,7 @@ export default function About() {
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="relative p-6 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 group"
               >
@@ -347,7 +374,7 @@ export default function About() {
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="relative p-6 rounded-lg bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 group"
               >

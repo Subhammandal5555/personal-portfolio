@@ -64,11 +64,20 @@ export default function Skills() {
           <span className="font-sans text-xs uppercase tracking-widest text-brand-accent font-medium mb-3 block">
             Capabilities
           </span>
-          <h2 className="mb-4">
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+            }}
+            className="mb-4"
+          >
             <HandDrawnUnderline className="font-marker font-normal text-3xl sm:text-5xl tracking-wide text-white">
               Core <span className="text-brand-accent">Skills</span>
             </HandDrawnUnderline>
-          </h2>
+          </motion.h2>
         </div>
 
         {/* Tab Buttons */}

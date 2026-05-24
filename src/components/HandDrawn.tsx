@@ -4,6 +4,19 @@ import { motion } from "framer-motion";
 
 // Reusable hand-drawn marker loop component
 export function HandDrawnLoop({ children }: { children: React.ReactNode }) {
+  const drawVariants = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: {
+      pathLength: 1,
+      opacity: 1,
+      transition: {
+        delay: 1.2, // Holds back the drawing effect so the user notices it
+        duration: 0.8,
+        ease: "easeInOut" as const
+      }
+    }
+  };
+
   return (
     <span className="relative inline-block px-3 py-1">
       <span className="relative z-10 text-white font-extrabold font-sans">{children}</span>
@@ -18,11 +31,9 @@ export function HandDrawnLoop({ children }: { children: React.ReactNode }) {
           strokeWidth="3.5"
           strokeLinecap="round"
           fill="none"
-          strokeDasharray="400"
-          initial={{ strokeDashoffset: 400 }}
-          whileInView={{ strokeDashoffset: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.3, ease: "easeInOut", delay: 0.2 }}
+          variants={drawVariants}
+          initial="hidden"
+          animate="visible"
         />
       </svg>
     </span>
@@ -37,6 +48,32 @@ export function HandDrawnUnderline({
   children: React.ReactNode; 
   className?: string; 
 }) {
+  const drawVariants1 = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: {
+      pathLength: 1,
+      opacity: 1,
+      transition: {
+        delay: 1.2, // Holds back the drawing effect so the user notices it
+        duration: 0.8,
+        ease: "easeInOut" as const
+      }
+    }
+  };
+
+  const drawVariants2 = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: {
+      pathLength: 1,
+      opacity: 1,
+      transition: {
+        delay: 1.5, // Sequential drawing sequence
+        duration: 0.7,
+        ease: "easeInOut" as const
+      }
+    }
+  };
+
   return (
     <span className="relative inline-block">
       <span className={`relative z-10 ${className}`}>{children}</span>
@@ -52,11 +89,9 @@ export function HandDrawnUnderline({
           strokeWidth="3"
           strokeLinecap="round"
           fill="none"
-          strokeDasharray="100"
-          initial={{ strokeDashoffset: 100 }}
-          whileInView={{ strokeDashoffset: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          variants={drawVariants1}
+          initial="hidden"
+          animate="visible"
         />
         {/* Underline stroke 2 */}
         <motion.path
@@ -65,11 +100,9 @@ export function HandDrawnUnderline({
           strokeWidth="2"
           strokeLinecap="round"
           fill="none"
-          strokeDasharray="100"
-          initial={{ strokeDashoffset: 100 }}
-          whileInView={{ strokeDashoffset: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.7 }}
+          variants={drawVariants2}
+          initial="hidden"
+          animate="visible"
         />
       </svg>
     </span>

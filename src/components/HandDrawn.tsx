@@ -10,8 +10,8 @@ export function HandDrawnLoop({ children }: { children: React.ReactNode }) {
       pathLength: 1,
       opacity: 1,
       transition: {
-        delay: 1.2, // Holds back the drawing effect so the user notices it
-        duration: 0.8,
+        delay: 0.2, // Quick start as previous
+        duration: 2.0, // Slower drawing duration for high visual elegance
         ease: "easeInOut" as const
       }
     }
@@ -54,8 +54,8 @@ export function HandDrawnUnderline({
       pathLength: 1,
       opacity: 1,
       transition: {
-        delay: 1.2, // Holds back the drawing effect so the user notices it
-        duration: 0.8,
+        delay: 0.3, // Quick start as previous
+        duration: 1.5, // Slower drawing duration for high visual elegance
         ease: "easeInOut" as const
       }
     }
@@ -67,8 +67,8 @@ export function HandDrawnUnderline({
       pathLength: 1,
       opacity: 1,
       transition: {
-        delay: 1.5, // Sequential drawing sequence
-        duration: 0.7,
+        delay: 0.7, // Sequential start as previous
+        duration: 1.4, // Slower drawing duration for high visual elegance
         ease: "easeInOut" as const
       }
     }

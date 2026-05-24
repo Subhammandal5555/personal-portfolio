@@ -18,8 +18,17 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("/");
+  const [isMounted, setIsMounted] = useState(false);
   const pathname = usePathname();
   const isScrollingRef = useRef(false);
+
+  // Set isMounted to true after a short timeout to prevent mount layout animations
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+    }, 150);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Background scrolled state
   useEffect(() => {
@@ -193,7 +202,11 @@ export default function Navbar() {
                   <motion.span
                     className="absolute -bottom-1.5 left-0 w-full h-[2px] bg-brand-accent"
                     layoutId="activeNavIndicator"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    transition={
+                      isMounted
+                        ? { type: "spring", stiffness: 380, damping: 30 }
+                        : { duration: 0 }
+                    }
                   />
                 )}
               </Link>

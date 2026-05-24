@@ -11,7 +11,7 @@ export function HandDrawnLoop({ children }: { children: React.ReactNode }) {
       opacity: 1,
       transition: {
         delay: 0.2, // Quick start as previous
-        duration: 1.4, // 30% faster drawing duration (reduced from 2.0s)
+        duration: 0.98, // Another 30% faster drawing duration (reduced from 1.4s)
         ease: "easeInOut" as const
       }
     }
@@ -56,7 +56,7 @@ export function HandDrawnUnderline({
       opacity: 1,
       transition: {
         delay: 0.3, // Quick start as previous
-        duration: 1.05, // 30% faster drawing duration (reduced from 1.5s)
+        duration: 0.7, // Another 30% faster drawing duration (reduced from 1.05s)
         ease: "easeInOut" as const
       }
     }
@@ -69,7 +69,7 @@ export function HandDrawnUnderline({
       opacity: 1,
       transition: {
         delay: 0.7, // Sequential start as previous
-        duration: 0.98, // 30% faster drawing duration (reduced from 1.4s)
+        duration: 0.65, // Another 30% faster drawing duration (reduced from 0.98s)
         ease: "easeInOut" as const
       }
     }

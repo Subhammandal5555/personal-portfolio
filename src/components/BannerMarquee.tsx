@@ -26,8 +26,8 @@ export default function BannerMarquee() {
                   {phrase}
                 </span>
                 <img
-                  src="/favicon.png"
-                  alt="India Flag Accent"
+                  src="/indian flag.png"
+                  alt="Indian Flag Accent"
                   className="h-6 inline-block mx-6 align-middle"
                 />
               </div>
@@ -42,7 +42,7 @@ export default function BannerMarquee() {
                   {phrase}
                 </span>
                 <img
-                  src="/favicon.png"
+                  src="/india-flag.png"
                   alt="India Flag Accent"
                   className="h-6 inline-block mx-6 align-middle"
                 />

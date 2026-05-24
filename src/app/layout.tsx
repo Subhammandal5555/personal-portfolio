@@ -23,7 +23,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Subham Mandal | Full-Stack Web Developer & Electronics Engineer",
+  title: "Subham Mandal",
   description: "Portfolio of Subham Mandal, a passionate Electronics & Communication Engineering student, full-stack web developer, and GATE 2026 Qualified professional specialized in bridging software and hardware.",
   keywords: ["Subham Mandal", "Full-Stack Developer", "Electronics Engineer", "ECE Portfolio", "GATE 2026", "Next.js", "Framer Motion", "Embedded Systems", "TI C2000"],
   authors: [{ name: "Subham Mandal" }],

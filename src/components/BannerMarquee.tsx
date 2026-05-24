@@ -22,7 +22,7 @@ export default function BannerMarquee() {
           <div className="flex items-center">
             {phrases.map((phrase, idx) => (
               <div key={`r1-${idx}`} className="flex items-center">
-                <span className="font-sans font-extrabold text-xl md:text-2xl tracking-wider text-gray-200 uppercase whitespace-nowrap inline-block align-middle">
+                <span className="font-marker font-normal text-xl md:text-2xl tracking-wider text-gray-200 uppercase whitespace-nowrap inline-block align-middle">
                   {phrase}
                 </span>
                 <img
@@ -38,12 +38,12 @@ export default function BannerMarquee() {
           <div className="flex items-center">
             {phrases.map((phrase, idx) => (
               <div key={`r2-${idx}`} className="flex items-center">
-                <span className="font-sans font-extrabold text-xl md:text-2xl tracking-wider text-gray-200 uppercase whitespace-nowrap inline-block align-middle">
+                <span className="font-marker font-normal text-xl md:text-2xl tracking-wider text-gray-200 uppercase whitespace-nowrap inline-block align-middle">
                   {phrase}
                 </span>
                 <img
-                  src="/india-flag.png"
-                  alt="India Flag Accent"
+                  src="/indian flag.png"
+                  alt="Indian Flag Accent"
                   className="h-6 inline-block mx-6 align-middle"
                 />
               </div>

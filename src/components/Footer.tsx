@@ -25,12 +25,11 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2 px-3 py-1 bg-brand-card/30 border border-brand-border rounded-md hover:border-brand-accent/40 transition-all duration-300 hover:shadow-[0_0_10px_rgba(135,90,123,0.15)] text-[11px] text-gray-400 font-sans tracking-wide">
-            <span>Total Visitors:</span>
+          <div className="flex items-center hover:shadow-[0_0_15px_rgba(135,90,123,0.25)] transition-all duration-300 rounded-sm overflow-hidden select-none pointer-events-none">
             <img 
-              src="https://profile-counter.glitch.me/subhammandal-portfolio/count.svg" 
-              alt="Total Visitor Counter" 
-              className="h-3.5 filter brightness-[0.85] contrast-125 select-none pointer-events-none"
+              src="https://hits.sh/subhammandal.in.svg?color=875a7b&label=Total%20Visitors" 
+              alt="Total Visitors" 
+              className="h-5"
               loading="lazy"
             />
           </div>

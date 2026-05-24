@@ -95,7 +95,7 @@ export default function Hero() {
             variants={containerVariants} 
             initial="hidden" 
             animate="visible" 
-            className="text-5xl md:text-7xl lg:text-8xl select-none uppercase flex flex-wrap items-center justify-center gap-x-4 md:gap-x-6 font-sans mb-6 leading-none"
+            className="text-5xl md:text-7xl lg:text-8xl uppercase flex flex-wrap items-center justify-center gap-x-4 md:gap-x-6 font-sans mb-6 leading-none"
           >
             {/* First Name Block */}
             <span className="text-white font-black tracking-tight whitespace-nowrap">

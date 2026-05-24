@@ -26,18 +26,16 @@ export default function Hero() {
     },
   };
 
-  const nameText = "Subham Mandal";
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.05 }
+      transition: { staggerChildren: 0.04 }
     }
   };
 
   const letterVariants = {
-    hidden: { opacity: 0, y: 15, filter: "blur(10px)" },
+    hidden: { opacity: 0, y: 15, filter: "blur(12px)" },
     visible: { 
       opacity: 1, 
       y: 0, 
@@ -92,31 +90,30 @@ export default function Hero() {
             <span>Open For Opportunities</span>
           </motion.div>
 
-          {/* Main Title - Heavy sans-serif with stylized light marker alternate */}
-          <motion.h1
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="font-heading font-extrabold text-4xl sm:text-6xl md:text-8xl tracking-tight text-white mb-6 leading-none flex flex-wrap justify-center items-center"
+          {/* Main Title - Cyberpunk high-contrast typography with staggered blur-reveal */}
+          <motion.h1 
+            variants={containerVariants} 
+            initial="hidden" 
+            animate="visible" 
+            className="text-5xl md:text-7xl lg:text-8xl select-none uppercase flex flex-wrap items-center justify-center gap-x-4 md:gap-x-6 font-sans mb-6 leading-none"
           >
-            {nameText.split("").map((char, index) => {
-              const isAccent = index > 6;
-              return (
-                <motion.span
-                  key={index}
-                  variants={letterVariants}
-                  className={
-                    char === " " 
-                      ? "inline-block" 
-                      : isAccent 
-                        ? "font-marker font-normal text-brand-accent tracking-wide text-[0.8em] inline-block" 
-                        : "inline-block uppercase"
-                  }
-                >
-                  {char === " " ? "\u00A0" : char}
+            {/* First Name Block */}
+            <span className="text-white font-black tracking-tight whitespace-nowrap">
+              {"SUBHAM".split("").map((char, index) => (
+                <motion.span key={`subham-${index}`} variants={letterVariants} className="inline-block">
+                  {char}
                 </motion.span>
-              );
-            })}
+              ))}
+            </span>
+
+            {/* Last Name Block */}
+            <span className="text-purple-400 font-light tracking-[0.2em] md:tracking-[0.25em] whitespace-nowrap drop-shadow-[0_0_20px_rgba(168,85,247,0.45)]">
+              {"MANDAL".split("").map((char, index) => (
+                <motion.span key={`mandal-${index}`} variants={letterVariants} className="inline-block">
+                  {char}
+                </motion.span>
+              ))}
+            </span>
           </motion.h1>
 
           {/* Sub-Title / Role with extreme weight contrasts */}

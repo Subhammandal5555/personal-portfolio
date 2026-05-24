@@ -18,10 +18,10 @@ export default function Footer() {
         <div className="flex flex-col items-center md:items-end gap-3 text-center md:text-right font-sans text-xs text-gray-500 font-light leading-relaxed">
           <div>
             <p className="mb-1">
-              &copy; {new Date().getFullYear()} Subham Mandal. All Rights Reserved.
+              &copy; {new Date().getFullYear()} Subham Mandal. All rights reserved.
             </p>
             <p className="text-gray-500">
-              Bridging software and hardware engineering. Made in India.
+              Bridging Software & Hardware Engineering. Made with ❤️ in India.
             </p>
           </div>
 

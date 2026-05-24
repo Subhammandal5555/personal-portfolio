@@ -6,7 +6,7 @@ import { ArrowRight, Code2, Cpu, Eye, Download } from "lucide-react";
 import { HandDrawnLoop, HandDrawnUnderline } from "@/components/HandDrawn";
 
 export default function Hero() {
-  const containerVariants = {
+  const heroContainerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -17,13 +17,33 @@ export default function Hero() {
     },
   };
 
-  const itemVariants = {
+  const heroItemVariants = {
     hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: { type: "spring" as const, stiffness: 100, damping: 15 },
     },
+  };
+
+  const nameText = "Subham Mandal";
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.05 }
+    }
+  };
+
+  const letterVariants = {
+    hidden: { opacity: 0, y: 15, filter: "blur(10px)" },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      filter: "blur(0px)",
+      transition: { duration: 0.4, ease: "easeOut" as const }
+    }
   };
 
   const handleCTAClick = (
@@ -58,14 +78,14 @@ export default function Hero() {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full flex-grow flex flex-col justify-center items-center text-center">
         <motion.div
-          variants={containerVariants}
+          variants={heroContainerVariants}
           initial="hidden"
           animate="visible"
           className="flex flex-col items-center"
         >
           {/* Subheading Badges */}
           <motion.div
-            variants={itemVariants}
+            variants={heroItemVariants}
             className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-border bg-brand-card/40 backdrop-blur-sm mb-6 text-xs uppercase tracking-widest text-gray-400 font-sans"
           >
             <span className="flex h-1.5 w-1.5 rounded-full bg-[#40D04E] animate-ping" />
@@ -74,15 +94,34 @@ export default function Hero() {
 
           {/* Main Title - Heavy sans-serif with stylized light marker alternate */}
           <motion.h1
-            variants={itemVariants}
-            className="font-heading font-extrabold text-4xl sm:text-6xl md:text-8xl tracking-tight text-white mb-6 leading-none"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="font-heading font-extrabold text-4xl sm:text-6xl md:text-8xl tracking-tight text-white mb-6 leading-none flex flex-wrap justify-center items-center"
           >
-            SUBHAM <span className="font-marker font-normal text-brand-accent tracking-wide text-[0.8em]">Mandal</span>
+            {nameText.split("").map((char, index) => {
+              const isAccent = index > 6;
+              return (
+                <motion.span
+                  key={index}
+                  variants={letterVariants}
+                  className={
+                    char === " " 
+                      ? "inline-block" 
+                      : isAccent 
+                        ? "font-marker font-normal text-brand-accent tracking-wide text-[0.8em] inline-block" 
+                        : "inline-block uppercase"
+                  }
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              );
+            })}
           </motion.h1>
 
           {/* Sub-Title / Role with extreme weight contrasts */}
           <motion.div
-            variants={itemVariants}
+            variants={heroItemVariants}
             className="flex flex-col sm:flex-row items-center gap-3 justify-center mb-10 font-heading text-lg sm:text-2xl tracking-wide max-w-3xl"
           >
             <span className="text-brand-accent font-extrabold flex items-center gap-2">
@@ -96,7 +135,7 @@ export default function Hero() {
 
           {/* Tagline wrapping key words in HandDrawn components */}
           <motion.p
-            variants={itemVariants}
+            variants={heroItemVariants}
             className="font-sans font-light text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed mb-12"
           >
             Bridging <HandDrawnLoop>software & hardware</HandDrawnLoop> to build <HandDrawnUnderline>high-performance</HandDrawnUnderline> digital experiences. Specializing in responsive web apps and robust embedded systems.
@@ -104,7 +143,7 @@ export default function Hero() {
 
           {/* Main CTA Buttons */}
           <motion.div
-            variants={itemVariants}
+            variants={heroItemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6"
           >
             <Link
@@ -127,7 +166,7 @@ export default function Hero() {
 
           {/* Beautiful Glassmorphic CV Pill */}
           <motion.div
-            variants={itemVariants}
+            variants={heroItemVariants}
             className="flex items-center gap-1 p-1 rounded-full border border-brand-border bg-brand-card/20 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:border-brand-accent/30 hover:shadow-[0_0_20px_rgba(135,90,123,0.1)] transition-all duration-500"
           >
             <a

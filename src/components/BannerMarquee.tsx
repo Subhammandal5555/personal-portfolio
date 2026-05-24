@@ -13,7 +13,7 @@ export default function BannerMarquee() {
           animate={{ x: [0, "-50%"] }}
           transition={{
             ease: "linear",
-            duration: 28,
+            duration: 40,
             repeat: Infinity,
           }}
           className="flex whitespace-nowrap"

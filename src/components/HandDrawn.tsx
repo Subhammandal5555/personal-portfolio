@@ -33,7 +33,8 @@ export function HandDrawnLoop({ children }: { children: React.ReactNode }) {
           fill="none"
           variants={drawVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         />
       </svg>
     </span>
@@ -91,7 +92,8 @@ export function HandDrawnUnderline({
           fill="none"
           variants={drawVariants1}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         />
         {/* Underline stroke 2 */}
         <motion.path
@@ -102,7 +104,8 @@ export function HandDrawnUnderline({
           fill="none"
           variants={drawVariants2}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         />
       </svg>
     </span>
@@ -130,7 +133,7 @@ export function HandDrawnHighlight({ children }: { children: React.ReactNode }) 
           strokeDasharray="250"
           initial={{ strokeDashoffset: 250 }}
           whileInView={{ strokeDashoffset: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 1.0, ease: "easeInOut", delay: 0.4 }}
         />
       </svg>

@@ -15,13 +15,25 @@ export default function Footer() {
           </span>
         </div>
         
-        <div className="text-center md:text-right font-sans text-xs text-gray-500 font-light leading-relaxed">
-          <p className="mb-1">
-            &copy; {new Date().getFullYear()} Subham Mandal. All Rights Reserved.
-          </p>
-          <p>
-            Bridging software and hardware engineering. Made in India.
-          </p>
+        <div className="flex flex-col items-center md:items-end gap-3 text-center md:text-right font-sans text-xs text-gray-500 font-light leading-relaxed">
+          <div>
+            <p className="mb-1">
+              &copy; {new Date().getFullYear()} Subham Mandal. All Rights Reserved.
+            </p>
+            <p className="text-gray-500">
+              Bridging software and hardware engineering. Made in India.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 px-3 py-1 bg-brand-card/30 border border-brand-border rounded-md hover:border-brand-accent/40 transition-all duration-300 hover:shadow-[0_0_10px_rgba(135,90,123,0.15)] text-[11px] text-gray-400 font-sans tracking-wide">
+            <span>Total Visitors:</span>
+            <img 
+              src="https://profile-counter.glitch.me/subhammandal-portfolio/count.svg" 
+              alt="Total Visitor Counter" 
+              className="h-3.5 filter brightness-[0.85] contrast-125 select-none pointer-events-none"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </footer>

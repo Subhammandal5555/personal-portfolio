@@ -30,7 +30,6 @@ export default function Footer() {
               src="https://hits.sh/subhammandal.in.svg?color=875a7b&label=Total%20Visitors" 
               alt="Total Visitors" 
               className="h-5"
-              loading="lazy"
             />
           </div>
         </div>

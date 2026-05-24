@@ -28,7 +28,7 @@ export default function BannerMarquee() {
                 <img
                   src="/indian flag.png"
                   alt="Indian Flag Accent"
-                  className="h-6 inline-block mx-6 align-middle"
+                  className="h-8 inline-block mx-6 align-middle"
                 />
               </div>
             ))}
@@ -44,7 +44,7 @@ export default function BannerMarquee() {
                 <img
                   src="/indian flag.png"
                   alt="Indian Flag Accent"
-                  className="h-6 inline-block mx-6 align-middle"
+                  className="h-8 inline-block mx-6 align-middle"
                 />
               </div>
             ))}

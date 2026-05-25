@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Inter, Caveat, Playwrite_GB_S_Guides } from "next/font/google";
+import { Outfit, Inter, Caveat } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
@@ -20,11 +20,6 @@ const caveat = Caveat({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-caveat",
-});
-
-const playwriteGuides = Playwrite_GB_S_Guides({
-  variable: "--font-playwrite-guides",
-  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -72,6 +67,47 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://subhammandal.in/#person",
+      "name": "Subham Mandal",
+      "url": "https://subhammandal.in",
+      "sameAs": [
+        "https://github.com/Subhammandal5555",
+        "https://www.linkedin.com/in/-subham-mandal",
+        "https://x.com/YourSubham_"
+      ],
+      "jobTitle": ["Full-Stack Web Developer", "Electronics Engineer"],
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "Cooch Behar Government Engineering College"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "Indian Institute of Technology (BHU), Varanasi"
+        }
+      ],
+      "description": "Subham Mandal's portfolio showcasing Next.js, Tailwind CSS, TypeScript, and high-performance UI engineering for web & embedded systems.",
+      "gender": "Male",
+      "nationality": "Indian"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://subhammandal.in/#website",
+      "url": "https://subhammandal.in",
+      "name": "Subham Mandal Portfolio",
+      "description": "Subham Mandal's portfolio showcasing Next.js, Tailwind CSS, TypeScript, and high-performance UI engineering for web & embedded systems.",
+      "publisher": {
+        "@id": "https://subhammandal.in/#person"
+      }
+    }
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -80,8 +116,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${inter.variable} ${caveat.variable} ${playwriteGuides.variable} h-full antialiased`}
+      className={`${outfit.variable} ${inter.variable} ${caveat.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="bg-brand-bg text-foreground min-h-full flex flex-col font-sans selection:bg-brand-accent/30 selection:text-white">
         <Navbar />
         <main className="flex-1">

@@ -6,7 +6,6 @@
   --font-sans: var(--font-inter);
   --font-heading: var(--font-outfit);
   --font-marker: var(--font-caveat);
-  --font-playwrite: var(--font-playwrite-guides);
 }
 
 @theme {
@@ -15,7 +14,6 @@
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
   --font-marker: var(--font-marker);
-  --font-playwrite: var(--font-playwrite);
   
   --color-brand-bg: #0F1115;
   --color-brand-card: #181C24;

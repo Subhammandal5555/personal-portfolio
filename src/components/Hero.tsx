@@ -95,15 +95,15 @@ export default function Hero() {
             variants={containerVariants} 
             initial="hidden" 
             animate="visible" 
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl flex flex-col md:flex-row items-center justify-center text-center w-full mx-auto gap-y-2 md:gap-y-0 md:gap-x-10 font-sans mb-6 leading-none will-change-transform transform-gpu"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl uppercase flex flex-col md:flex-row items-center justify-center text-center w-full mx-auto gap-y-2 md:gap-y-0 md:gap-x-10 font-sans mb-6 leading-none will-change-transform transform-gpu"
           >
             {/* First Name Block */}
-            <span className="text-white font-normal tracking-normal whitespace-nowrap flex items-center justify-center w-full md:w-auto font-playwrite">
-              {"Subham".split("").map((char, index) => <motion.span key={`subham-${index}`} variants={letterVariants} className="inline-block will-change-transform transform-gpu">{char}</motion.span>)}
+            <span className="text-white font-black tracking-tight whitespace-nowrap flex items-center justify-center w-full md:w-auto">
+              {"SUBHAM".split("").map((char, index) => <motion.span key={`subham-${index}`} variants={letterVariants} className="inline-block will-change-transform transform-gpu">{char}</motion.span>)}
             </span>
 
             {/* Last Name Block */}
-            <span className="text-purple-400 font-light uppercase whitespace-nowrap drop-shadow-[0_0_20px_rgba(168,85,247,0.45)] flex items-center justify-center gap-x-[0.2em] md:gap-x-[0.25em] w-full md:w-auto">
+            <span className="text-purple-400 font-light whitespace-nowrap drop-shadow-[0_0_20px_rgba(168,85,247,0.45)] flex items-center justify-center gap-x-[0.2em] md:gap-x-[0.25em] w-full md:w-auto">
               {"MANDAL".split("").map((char, index) => <motion.span key={`mandal-${index}`} variants={letterVariants} className="inline-block will-change-transform transform-gpu">{char}</motion.span>)}
             </span>
           </motion.h1>

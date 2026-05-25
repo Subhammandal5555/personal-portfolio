@@ -95,10 +95,10 @@ export default function Hero() {
             variants={containerVariants} 
             initial="hidden" 
             animate="visible" 
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl uppercase flex flex-wrap items-center justify-center gap-x-4 md:gap-x-6 font-sans mb-6 leading-none will-change-transform transform-gpu"
+            className="flex flex-col items-center justify-center text-center w-full uppercase font-sans mb-6 will-change-transform transform-gpu"
           >
             {/* First Name Block */}
-            <span className="text-white font-black tracking-tight whitespace-nowrap">
+            <span className="w-full text-center block text-white font-black tracking-tight whitespace-nowrap text-5xl md:text-6xl leading-none">
               {"SUBHAM".split("").map((char, index) => (
                 <motion.span key={`subham-${index}`} variants={letterVariants} className="inline-block will-change-transform transform-gpu">
                   {char}
@@ -107,7 +107,7 @@ export default function Hero() {
             </span>
 
             {/* Last Name Block */}
-            <span className="text-purple-400 font-light tracking-[0.2em] md:tracking-[0.25em] whitespace-nowrap drop-shadow-[0_0_20px_rgba(168,85,247,0.45)]">
+            <span className="w-full text-center block text-purple-400 font-light tracking-[0.2em] md:tracking-[0.25em] whitespace-nowrap drop-shadow-[0_0_20px_rgba(168,85,247,0.45)] text-5xl md:text-6xl leading-none">
               {"MANDAL".split("").map((char, index) => (
                 <motion.span key={`mandal-${index}`} variants={letterVariants} className="inline-block will-change-transform transform-gpu">
                   {char}

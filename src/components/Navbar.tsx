@@ -231,8 +231,9 @@ export default function Navbar() {
 
         {/* Mobile Menu Trigger */}
         <button
-          className="md:hidden text-gray-300 hover:text-white focus:outline-none"
+          className="md:hidden text-gray-300 hover:text-white focus:outline-none p-2.5 -mr-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Menu"
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -253,7 +254,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href, link.id)}
-                  className={`font-sans text-base py-2 transition-colors duration-300 ${
+                  className={`font-sans text-base py-3 transition-colors duration-300 ${
                     activeSection === link.id
                       ? "text-brand-accent font-semibold"
                       : "text-gray-400 hover:text-white"

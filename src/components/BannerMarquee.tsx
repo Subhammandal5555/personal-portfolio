@@ -6,7 +6,7 @@ export default function BannerMarquee() {
   const phrases = Array(8).fill("BUILDING SOMETHING THAT MAKES INDIA PROUD");
 
   return (
-    <div className="w-full overflow-hidden bg-brand-bg/50 border-y border-brand-border/40 py-4 select-none relative z-20">
+    <div className="w-full max-w-full overflow-x-hidden relative bg-brand-bg/50 border-y border-brand-border/40 py-4 select-none z-20">
       <div className="flex w-max">
         {/* Double-row container moving infinitely */}
         <motion.div

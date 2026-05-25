@@ -65,7 +65,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-between items-center pt-28 pb-8 overflow-hidden bg-brand-bg scroll-mt-20"
+      className="relative min-h-dvh flex flex-col justify-between items-center pt-28 pb-8 overflow-hidden bg-brand-bg scroll-mt-20"
     >
       {/* Background Decorative Mesh Glows */}
       <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] rounded-full bg-brand-accent/10 blur-[100px] pointer-events-none animate-pulse duration-[6s]" />
@@ -95,12 +95,12 @@ export default function Hero() {
             variants={containerVariants} 
             initial="hidden" 
             animate="visible" 
-            className="text-5xl md:text-7xl lg:text-8xl uppercase flex flex-wrap items-center justify-center gap-x-4 md:gap-x-6 font-sans mb-6 leading-none"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl uppercase flex flex-wrap items-center justify-center gap-x-4 md:gap-x-6 font-sans mb-6 leading-none will-change-transform transform-gpu"
           >
             {/* First Name Block */}
             <span className="text-white font-black tracking-tight whitespace-nowrap">
               {"SUBHAM".split("").map((char, index) => (
-                <motion.span key={`subham-${index}`} variants={letterVariants} className="inline-block">
+                <motion.span key={`subham-${index}`} variants={letterVariants} className="inline-block will-change-transform transform-gpu">
                   {char}
                 </motion.span>
               ))}
@@ -109,7 +109,7 @@ export default function Hero() {
             {/* Last Name Block */}
             <span className="text-purple-400 font-light tracking-[0.2em] md:tracking-[0.25em] whitespace-nowrap drop-shadow-[0_0_20px_rgba(168,85,247,0.45)]">
               {"MANDAL".split("").map((char, index) => (
-                <motion.span key={`mandal-${index}`} variants={letterVariants} className="inline-block">
+                <motion.span key={`mandal-${index}`} variants={letterVariants} className="inline-block will-change-transform transform-gpu">
                   {char}
                 </motion.span>
               ))}
@@ -170,7 +170,7 @@ export default function Hero() {
               href="/CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-4 py-2 rounded-full font-sans text-xs font-semibold tracking-wider text-gray-400 hover:text-white hover:bg-white/5 transition-all duration-300"
+              className="group flex items-center gap-2 px-4 py-3 rounded-full font-sans text-xs font-semibold tracking-wider text-gray-400 hover:text-white hover:bg-white/5 transition-all duration-300"
             >
               <Eye className="w-3.5 h-3.5 text-gray-400 group-hover:text-brand-accent transition-colors duration-300" />
               <span>View CV</span>
@@ -181,7 +181,7 @@ export default function Hero() {
             <a
               href="/CV.pdf"
               download="Subham_Mandal_CV.pdf"
-              className="group flex items-center gap-2 px-4 py-2 rounded-full font-sans text-xs font-semibold tracking-wider text-brand-accent hover:text-white hover:bg-brand-accent/80 transition-all duration-300"
+              className="group flex items-center gap-2 px-4 py-3 rounded-full font-sans text-xs font-semibold tracking-wider text-brand-accent hover:text-white hover:bg-brand-accent/80 transition-all duration-300"
             >
               <Download className="w-3.5 h-3.5 text-brand-accent group-hover:text-white transition-colors duration-300" />
               <span>Download CV</span>

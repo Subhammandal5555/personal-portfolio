@@ -253,7 +253,24 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href, link.id)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpen(false);
+                    
+                    isScrollingRef.current = true;
+                    setActiveSection(link.id);
+                    
+                    if (window.location.pathname !== link.href) {
+                      window.history.pushState(null, "", link.href);
+                    }
+                    
+                    const targetSelector = link.href === "/" ? "#home" : `#${link.id}`;
+                    document.querySelector(targetSelector)?.scrollIntoView({ behavior: "smooth" });
+                    
+                    setTimeout(() => {
+                      isScrollingRef.current = false;
+                    }, 800);
+                  }}
                   className={`font-sans text-base py-3 transition-colors duration-300 ${
                     activeSection === link.id
                       ? "text-brand-accent font-semibold"

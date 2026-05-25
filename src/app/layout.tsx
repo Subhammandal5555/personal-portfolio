@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Inter, Caveat } from "next/font/google";
+import { Outfit, Inter, Caveat, Playwrite_GB_S_Guides } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
@@ -20,6 +20,11 @@ const caveat = Caveat({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-caveat",
+});
+
+const playwriteGuides = Playwrite_GB_S_Guides({
+  variable: "--font-playwrite-guides",
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -75,7 +80,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${inter.variable} ${caveat.variable} h-full antialiased`}
+      className={`${outfit.variable} ${inter.variable} ${caveat.variable} ${playwriteGuides.variable} h-full antialiased`}
     >
       <body className="bg-brand-bg text-foreground min-h-full flex flex-col font-sans selection:bg-brand-accent/30 selection:text-white">
         <Navbar />

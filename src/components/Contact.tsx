@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Send, MapPin, Phone } from "lucide-react";
+import { Mail, Send, MapPin } from "lucide-react";
 import { HandDrawnUnderline } from "@/components/HandDrawn";
 import { useState } from "react";
 

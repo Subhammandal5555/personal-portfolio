@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Play, ArrowRight, Clock, ShieldAlert, Sparkles } from "lucide-react";
+import { ExternalLink, Play, Sparkles } from "lucide-react";
 import { HandDrawnUnderline } from "@/components/HandDrawn";
 import { useState, useEffect } from "react";
 

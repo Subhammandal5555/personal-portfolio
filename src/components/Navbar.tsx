@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Cpu } from "lucide-react";
@@ -19,7 +18,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isMounted, setIsMounted] = useState(false);
-  const pathname = usePathname();
   const isScrollingRef = useRef(false);
 
   // Set isMounted to true after a short timeout to prevent mount layout animations

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, BookOpen, GraduationCap, Cpu, Layers, Calendar } from "lucide-react";
+import { Award, GraduationCap, Cpu, Layers, Calendar } from "lucide-react";
 import { HandDrawnUnderline } from "@/components/HandDrawn";
 
 export default function About() {

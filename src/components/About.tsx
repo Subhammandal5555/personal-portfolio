@@ -216,12 +216,12 @@ export default function About() {
                 {/* Visual Connector Dot */}
                 <div className="absolute -left-[41px] top-7 w-4 h-4 rounded-full bg-brand-accent/80 border-4 border-brand-bg group-hover:scale-125 group-hover:bg-brand-accent transition-all duration-300 z-10" />
 
-                <div className="flex justify-between items-start gap-4 mb-3">
+                <div className="flex flex-col sm:flex-row justify-between items-start gap-2 sm:gap-4 mb-3">
                   <div>
                     <h4 className="font-heading font-extrabold text-base sm:text-lg text-white">
                       Summer Research Intern
                     </h4>
-                    <span className="font-sans text-xs text-brand-accent font-semibold text-wrap pr-2">
+                    <span className="w-full block normal-case break-words font-sans text-xs text-brand-accent font-semibold pr-2">
                       Indian Institute of Technology (BHU), Varanasi
                     </span>
                   </div>

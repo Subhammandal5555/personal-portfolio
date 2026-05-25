@@ -99,20 +99,12 @@ export default function Hero() {
           >
             {/* First Name Block */}
             <span className="text-white font-black tracking-tight whitespace-nowrap text-center block md:inline w-full md:w-auto">
-              {"SUBHAM".split("").map((char, index) => (
-                <motion.span key={`subham-${index}`} variants={letterVariants} className="inline-block will-change-transform transform-gpu">
-                  {char}
-                </motion.span>
-              ))}
+              {"SUBHAM".split("").map((char, index) => <motion.span key={`subham-${index}`} variants={letterVariants} className="inline-block will-change-transform transform-gpu">{char}</motion.span>)}
             </span>
 
             {/* Last Name Block */}
-            <span className="text-purple-400 font-light tracking-[0.2em] md:tracking-[0.25em] mr-[-0.2em] md:mr-[-0.25em] whitespace-nowrap drop-shadow-[0_0_20px_rgba(168,85,247,0.45)] text-center block md:inline w-full md:w-auto">
-              {"MANDAL".split("").map((char, index) => (
-                <motion.span key={`mandal-${index}`} variants={letterVariants} className="inline-block will-change-transform transform-gpu">
-                  {char}
-                </motion.span>
-              ))}
+            <span className="text-purple-400 font-light tracking-[0.2em] md:tracking-[0.25em] pl-[0.2em] md:pl-[0.25em] whitespace-nowrap drop-shadow-[0_0_20px_rgba(168,85,247,0.45)] text-center block md:inline w-full md:w-auto">
+              {"MANDAL".split("").map((char, index) => <motion.span key={`mandal-${index}`} variants={letterVariants} className="inline-block will-change-transform transform-gpu">{char}</motion.span>)}
             </span>
           </motion.h1>
 

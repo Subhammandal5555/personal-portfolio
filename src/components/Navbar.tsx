@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Cpu } from "lucide-react";
 
@@ -19,6 +20,7 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const [isMounted, setIsMounted] = useState(false);
   const isScrollingRef = useRef(false);
+  const pathname = usePathname();
 
   // Set isMounted to true after a short timeout to prevent mount layout animations
   useEffect(() => {
@@ -38,59 +40,33 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Sniff path on mount and scroll to deep route
+  // Sniff path on mount/navigation and scroll to deep route
   useEffect(() => {
-    const path = window.location.pathname;
-    if (path !== "/") {
-      const sectionId = path.substring(1);
-      const element = document.getElementById(sectionId);
-      if (element) {
-        isScrollingRef.current = true;
-        setActiveSection(sectionId);
-        const timer = setTimeout(() => {
-          const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-          const offsetPosition = elementPosition - 80; // 80px sticky offset
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth",
-          });
-          setTimeout(() => {
-            isScrollingRef.current = false;
-          }, 800);
-        }, 500);
-        return () => clearTimeout(timer);
-      }
-    } else {
-      setActiveSection("home");
-    }
-  }, []);
-
-  // Popstate listener to handle browser back/forward buttons
-  useEffect(() => {
-    const handlePopState = () => {
-      const path = window.location.pathname;
-      const sectionId = path === "/" ? "home" : path.substring(1);
-      const element = document.getElementById(sectionId);
-      if (element) {
-        isScrollingRef.current = true;
-        setActiveSection(sectionId);
+    const sectionId = pathname === "/" ? "home" : pathname.substring(1);
+    const element = document.getElementById(sectionId);
+    
+    if (element) {
+      isScrollingRef.current = true;
+      setActiveSection(sectionId);
+      
+      const timer = setTimeout(() => {
         const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-        const offsetPosition = elementPosition - 80;
+        const offsetPosition = elementPosition - 80; // 80px sticky offset
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth",
         });
+        
         setTimeout(() => {
           isScrollingRef.current = false;
         }, 800);
-      } else {
-        setActiveSection(sectionId);
-      }
-    };
-
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
-  }, []);
+      }, isMounted ? 100 : 500); // 500ms on initial mount to allow hydration, 100ms on client-side routing
+      
+      return () => clearTimeout(timer);
+    } else {
+      setActiveSection("home");
+    }
+  }, [pathname, isMounted]);
 
   // IntersectionObserver to update activeSection and URL dynamically on scroll
   useEffect(() => {
@@ -129,33 +105,36 @@ export default function Navbar() {
     };
   }, []);
 
-  // Custom click interceptor
+  // Smart Nav Click interceptor
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, sectionId: string) => {
-    e.preventDefault();
-    
-    isScrollingRef.current = true;
-    setActiveSection(sectionId);
-    
-    if (window.location.pathname !== href) {
-      window.history.pushState(null, "", href);
-    }
-    
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - 80; // 80px offset
+    // Check if we are already on that route
+    if (window.location.pathname === href) {
+      e.preventDefault();
       
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+      isScrollingRef.current = true;
+      setActiveSection(sectionId);
+      
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - 80; // 80px offset
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+
+      setIsOpen(false);
+
+      setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 800);
+    } else {
+      // Alternate route tapped -> let Next.js client-side navigation trigger naturally,
+      // but close the mobile drawer panel instantly
+      setIsOpen(false);
     }
-
-    setIsOpen(false);
-
-    setTimeout(() => {
-      isScrollingRef.current = false;
-    }, 800);
   };
 
   return (
@@ -173,6 +152,7 @@ export default function Navbar() {
         {/* Brand/Logo */}
         <Link 
           href="/" 
+          scroll={false}
           onClick={(e) => handleNavClick(e, "/", "home")}
           className="flex items-center gap-2 group"
         >
@@ -192,6 +172,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
+                scroll={false}
                 onClick={(e) => handleNavClick(e, link.href, link.id)}
                 className="relative font-sans text-sm font-medium text-gray-400 hover:text-white transition-colors duration-300 tracking-wide"
               >
@@ -222,6 +203,7 @@ export default function Navbar() {
           
           <Link
             href="/contact"
+            scroll={false}
             onClick={(e) => handleNavClick(e, "/contact", "contact")}
             className="font-sans text-xs uppercase tracking-widest px-4 py-2 border border-brand-accent text-brand-accent rounded-sm bg-brand-accent/5 hover:bg-brand-accent hover:text-white transition-all duration-300 hover:shadow-[0_0_15px_rgba(135,90,123,0.4)]"
           >
@@ -253,24 +235,8 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsOpen(false);
-                    
-                    isScrollingRef.current = true;
-                    setActiveSection(link.id);
-                    
-                    if (window.location.pathname !== link.href) {
-                      window.history.pushState(null, "", link.href);
-                    }
-                    
-                    const targetSelector = link.href === "/" ? "#home" : `#${link.id}`;
-                    document.querySelector(targetSelector)?.scrollIntoView({ behavior: "smooth" });
-                    
-                    setTimeout(() => {
-                      isScrollingRef.current = false;
-                    }, 800);
-                  }}
+                  scroll={false}
+                  onClick={(e) => handleNavClick(e, link.href, link.id)}
                   className={`font-sans text-base py-3 transition-colors duration-300 ${
                     activeSection === link.id
                       ? "text-brand-accent font-semibold"
@@ -290,6 +256,7 @@ export default function Navbar() {
               </a>
               <Link
                 href="/contact"
+                scroll={false}
                 onClick={(e) => handleNavClick(e, "/contact", "contact")}
                 className="w-full text-center font-sans text-xs uppercase tracking-widest py-3 border border-brand-accent text-brand-accent rounded-sm bg-brand-accent/5 hover:bg-brand-accent hover:text-white transition-all duration-300"
               >

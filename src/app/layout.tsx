@@ -24,13 +24,47 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   title: "Subham Mandal",
-  description: "Portfolio of Subham Mandal, a passionate Electronics & Communication Engineering student, full-stack web developer, and GATE 2026 Qualified professional specialized in bridging software and hardware.",
-  keywords: ["Subham Mandal", "Full-Stack Developer", "Electronics Engineer", "ECE Portfolio", "GATE 2026", "Next.js", "Framer Motion", "Embedded Systems", "TI C2000"],
+  description: "Subham Mandal's portfolio showcasing Next.js, Tailwind CSS, TypeScript, and high-performance UI engineering for web & embedded systems.",
+  keywords: ["Subham Mandal", "Subham Mandal Portfolio", "UI Engineer India", "Frontend Developer", "Next.js Expert", "Electronics Engineer"],
   authors: [{ name: "Subham Mandal" }],
   creator: "Subham Mandal",
+  metadataBase: new URL("https://subhammandal.in"),
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  openGraph: {
+    title: "Subham Mandal",
+    description: "Subham Mandal's portfolio showcasing Next.js, Tailwind CSS, TypeScript, and high-performance UI engineering for web & embedded systems.",
+    url: "https://subhammandal.in",
+    siteName: "Subham Mandal Portfolio",
+    images: [
+      {
+        url: "/favicon.png",
+        width: 512,
+        height: 512,
+        alt: "Subham Mandal Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Subham Mandal",
+    description: "Subham Mandal's portfolio showcasing Next.js, Tailwind CSS, TypeScript, and high-performance UI engineering for web & embedded systems.",
+    images: ["/favicon.png"],
+  },
   icons: {
-    icon: '/favicon.png',
-  }
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

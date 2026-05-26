@@ -18,6 +18,13 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const activeSectionRef = useRef("home");
+
+  const updateActiveSection = (id: string) => {
+    activeSectionRef.current = id;
+    setActiveSection(id);
+  };
+
   const [isMounted, setIsMounted] = useState(false);
   const isScrollingRef = useRef(false);
   const pathname = usePathname();
@@ -30,13 +37,70 @@ export default function Navbar() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Background scrolled state
+  // Handle scrolled background header state and active section viewport tracking
   useEffect(() => {
     const handleScroll = () => {
+      // 1. Scrolled header background transition
       setScrolled(window.scrollY > 20);
+
+      // If programmatically scrolling (clicking links/first mount), ignore manual override checks to prevent scroll bounce/jitter
+      if (isScrollingRef.current) return;
+
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const scrollHeight = document.documentElement.scrollHeight;
+
+      // 2. Absolute Scroll Boundary Override Checks
+      // Force "home" if scrolled close to the top
+      if (scrollY < 80) {
+        if (activeSectionRef.current !== "home") {
+          updateActiveSection("home");
+        }
+        const path = "/";
+        if (window.location.pathname !== path) {
+          window.history.replaceState(null, "", path);
+        }
+        return;
+      }
+
+      // Force "contact" if scrolled close to the bottom (handles short contact sections and tall devices)
+      if (windowHeight + scrollY >= scrollHeight - 80) {
+        if (activeSectionRef.current !== "contact") {
+          updateActiveSection("contact");
+        }
+        const path = "/contact";
+        if (window.location.pathname !== path) {
+          window.history.replaceState(null, "", path);
+        }
+        return;
+      }
+
+      // 3. Dynamic Section Intersection Sweep (using viewport Sweet-Spot Line)
+      const sections = ["home", "about", "skills", "projects", "contact"];
+      const triggerOffset = windowHeight / 3; // Visual midpoint sweet-spot (roughly 33% from viewport top)
+
+      for (const id of sections) {
+        const element = document.getElementById(id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= triggerOffset && rect.bottom > triggerOffset) {
+            if (activeSectionRef.current !== id) {
+              updateActiveSection(id);
+            }
+            const path = id === "home" ? "/" : `/${id}`;
+            if (window.location.pathname !== path) {
+              window.history.replaceState(null, "", path);
+            }
+            break;
+          }
+        }
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Initialize immediately to sync layout state on page load
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -47,7 +111,7 @@ export default function Navbar() {
     
     if (element) {
       isScrollingRef.current = true;
-      setActiveSection(sectionId);
+      updateActiveSection(sectionId);
       
       const timer = setTimeout(() => {
         const elementPosition = element.getBoundingClientRect().top + window.scrollY;
@@ -64,46 +128,9 @@ export default function Navbar() {
       
       return () => clearTimeout(timer);
     } else {
-      setActiveSection("home");
+      updateActiveSection("home");
     }
   }, [pathname, isMounted]);
-
-  // IntersectionObserver to update activeSection and URL dynamically on scroll
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.45, // Triggers when section occupies roughly half the screen
-    };
-
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      if (isScrollingRef.current) return;
-
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          setActiveSection(id);
-          
-          const path = id === "home" ? "/" : `/${id}`;
-          if (window.location.pathname !== path) {
-            window.history.replaceState(null, "", path);
-          }
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
-
-    const sections = ["home", "about", "skills", "projects", "contact"];
-    sections.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
 
   // Smart Nav Click interceptor
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, sectionId: string) => {
@@ -112,7 +139,7 @@ export default function Navbar() {
       e.preventDefault();
       
       isScrollingRef.current = true;
-      setActiveSection(sectionId);
+      updateActiveSection(sectionId);
       
       const element = document.getElementById(sectionId);
       if (element) {

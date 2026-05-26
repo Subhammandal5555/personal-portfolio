@@ -130,6 +130,15 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+
+        {/* Hidden static HTML form for Netlify form detection in Next.js Static Export */}
+        <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden className="hidden" aria-hidden="true">
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <textarea name="message"></textarea>
+          <input type="text" name="bot-field" />
+        </form>
       </body>
     </html>
   );

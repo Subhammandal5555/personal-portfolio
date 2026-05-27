@@ -56,10 +56,6 @@ export default function Navbar() {
         if (activeSectionRef.current !== "home") {
           updateActiveSection("home");
         }
-        const path = "/";
-        if (window.location.pathname !== path) {
-          window.history.replaceState(null, "", path);
-        }
         return;
       }
 
@@ -67,10 +63,6 @@ export default function Navbar() {
       if (windowHeight + scrollY >= scrollHeight - 80) {
         if (activeSectionRef.current !== "contact") {
           updateActiveSection("contact");
-        }
-        const path = "/contact";
-        if (window.location.pathname !== path) {
-          window.history.replaceState(null, "", path);
         }
         return;
       }
@@ -86,10 +78,6 @@ export default function Navbar() {
           if (rect.top <= triggerOffset && rect.bottom > triggerOffset) {
             if (activeSectionRef.current !== id) {
               updateActiveSection(id);
-            }
-            const path = id === "home" ? "/" : `/${id}`;
-            if (window.location.pathname !== path) {
-              window.history.replaceState(null, "", path);
             }
             break;
           }

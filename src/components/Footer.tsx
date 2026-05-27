@@ -1,6 +1,7 @@
 "use client";
 
-import { Cpu } from "lucide-react";
+import { Cpu, Heart } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
@@ -21,7 +22,29 @@ export default function Footer() {
               &copy; {new Date().getFullYear()} Subham Mandal. All rights reserved.
             </p>
             <p className="text-gray-500">
-              Bridging Software & Hardware Engineering. Made with ❤️ in India.
+              Bridging Software & Hardware Engineering.{" "}
+              <span className="block mt-1 sm:mt-0 sm:inline whitespace-nowrap">
+                Made with{" "}
+                <motion.span
+                  className="inline-block align-middle relative -top-[2px]"
+                  animate={{
+                    scale: [1, 1.125, 1],
+                    opacity: [0.4, 1, 0.4],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    ease: "easeInOut",
+                  }}
+                >
+                  <Heart 
+                    strokeWidth={1.5}
+                    className="inline w-[11px] h-[11px] mx-1 text-white fill-transparent align-middle drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]" 
+                  />
+                </motion.span>{" "}
+                in India.
+              </span>
             </p>
           </div>
 

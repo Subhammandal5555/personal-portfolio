@@ -159,7 +159,7 @@ export default function Hero() {
             className="flex items-center gap-1 p-1 rounded-full border border-brand-border bg-brand-card/20 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:border-brand-accent/30 hover:shadow-[0_0_20px_rgba(135,90,123,0.1)] transition-all duration-500"
           >
             <a
-              href="/CV.pdf"
+              href="/subham_mandal_resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 px-4 py-3 rounded-full font-sans text-xs font-semibold tracking-wider text-gray-400 hover:text-white hover:bg-white/5 transition-all duration-300"
@@ -171,8 +171,8 @@ export default function Hero() {
             <div className="h-4 w-[1px] bg-brand-border/50" />
 
             <a
-              href="/CV.pdf"
-              download="Subham_Mandal_CV.pdf"
+              href="/subham_mandal_resume.pdf"
+              download="Subham_Mandal_Resume"
               className="group flex items-center gap-2 px-4 py-3 rounded-full font-sans text-xs font-semibold tracking-wider text-brand-accent hover:text-white hover:bg-brand-accent/80 transition-all duration-300"
             >
               <Download className="w-3.5 h-3.5 text-brand-accent group-hover:text-white transition-colors duration-300" />

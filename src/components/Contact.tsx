@@ -3,12 +3,64 @@
 import { motion } from "framer-motion";
 import { Mail, Send, MapPin } from "lucide-react";
 import { HandDrawnUnderline } from "@/components/HandDrawn";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const encodedEmail = "Y29udGFjdEBzdWJoYW1tYW5kYWwuaW4=";
 
 export default function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const renderWidget = () => {
+      const grecaptcha = (window as any).grecaptcha;
+      if (grecaptcha && grecaptcha.render) {
+        const container = document.getElementById("recaptcha-container");
+        if (container) {
+          container.innerHTML = "";
+          try {
+            grecaptcha.render("recaptcha-container", {
+              sitekey: "6Ldf3ZMUAAAAAPo6FXRy4Zojmja2_49qPTyga01K",
+              theme: "dark",
+            });
+          } catch (e) {
+            console.error("reCAPTCHA render error:", e);
+          }
+        }
+      }
+    };
+
+    const scriptId = "recaptcha-api-script";
+    let script = document.getElementById(scriptId) as HTMLScriptElement | null;
+
+    if (!script) {
+      script = document.createElement("script");
+      script.id = scriptId;
+      script.src = "https://www.google.com/recaptcha/api.js?render=explicit";
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+
+      script.onload = () => {
+        const interval = setInterval(() => {
+          const grecaptcha = (window as any).grecaptcha;
+          if (grecaptcha && grecaptcha.render) {
+            clearInterval(interval);
+            renderWidget();
+          }
+        }, 100);
+      };
+    } else {
+      const interval = setInterval(() => {
+        const grecaptcha = (window as any).grecaptcha;
+        if (grecaptcha && grecaptcha.render) {
+          clearInterval(interval);
+          renderWidget();
+        }
+      }, 100);
+    }
+  }, []);
 
   const handleEmailClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -248,7 +300,7 @@ export default function Contact() {
                 </div>
 
                 {/* Netlify reCAPTCHA verification placeholder */}
-                <div data-netlify-recaptcha="true" className="my-2 flex justify-center md:justify-start"></div>
+                <div id="recaptcha-container" data-netlify-recaptcha="true" className="my-2 flex justify-center md:justify-start"></div>
 
                 {/* CTA Button with 300ms transitions and shadow-glow lift on hover */}
                 <button

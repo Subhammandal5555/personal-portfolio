@@ -104,14 +104,16 @@ export default function Contact() {
     
     const form = e.currentTarget;
     const formData = new FormData(form);
-    
+
+    // Check if we are on localhost
     const isLocalhost = 
-      window.location.hostname === "localhost" || 
-      window.location.hostname === "127.0.0.1";
-      
+      typeof window !== "undefined" && 
+      (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+
+    // Client-side verification: prevent submission if reCAPTCHA checkbox is not checked
     const recaptchaResponse = formData.get("g-recaptcha-response");
     if (!isLocalhost && !recaptchaResponse) {
-      alert("Please complete the reCAPTCHA verification before submitting.");
+      alert("Please complete the reCAPTCHA verification.");
       return;
     }
     
@@ -120,11 +122,27 @@ export default function Contact() {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData as any).toString(),
     })
-      .then(() => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Form submission rejected by server");
+        }
         setFormSubmitted(true);
         form.reset();
+
+        // Reset the reCAPTCHA widget visually after successful submission
+        const grecaptcha = (window as any).grecaptcha;
+        if (grecaptcha && grecaptcha.reset) {
+          try {
+            grecaptcha.reset();
+          } catch (err) {
+            console.error("reCAPTCHA reset error:", err);
+          }
+        }
       })
-      .catch((error) => console.error("Form submission error:", error));
+      .catch((error) => {
+        console.error("Form submission error:", error);
+        alert("An error occurred during submission. Please check your reCAPTCHA and try again.");
+      });
   };
 
   return (

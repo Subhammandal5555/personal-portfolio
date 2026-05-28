@@ -105,6 +105,16 @@ export default function Contact() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     
+    const isLocalhost = 
+      window.location.hostname === "localhost" || 
+      window.location.hostname === "127.0.0.1";
+      
+    const recaptchaResponse = formData.get("g-recaptcha-response");
+    if (!isLocalhost && !recaptchaResponse) {
+      alert("Please complete the reCAPTCHA verification before submitting.");
+      return;
+    }
+    
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

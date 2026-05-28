@@ -140,6 +140,22 @@ export default function RootLayout({
           <input type="text" name="bot-field" />
           <div data-netlify-recaptcha="true"></div>
         </form>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var el = document.querySelector('[data-sitekey]');
+                  if (el) {
+                    window.__NETLIFY_RECAPTCHA_SITEKEY__ = el.getAttribute('data-sitekey');
+                  }
+                } catch (e) {
+                  console.error("Netlify sitekey extraction error:", e);
+                }
+              })();
+            `
+          }}
+        />
       </body>
     </html>
   );

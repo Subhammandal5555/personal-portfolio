@@ -35,8 +35,9 @@ export default function Contact() {
       if (grecaptcha && grecaptcha.render) {
         container.innerHTML = "";
         try {
+          const sitekey = (window as any).__NETLIFY_RECAPTCHA_SITEKEY__ || "6Ldf3ZMUAAAAAPo6FXRy4Zojmja2_49qPTyga01K";
           grecaptcha.render("recaptcha-container", {
-            sitekey: "6Ldf3ZMUAAAAAPo6FXRy4Zojmja2_49qPTyga01K",
+            sitekey: sitekey,
             theme: "dark",
           });
         } catch (e) {

@@ -62,3 +62,11 @@ html {
   animation: border-pulse 4s linear infinite;
 }
 
+/* Custom cursor and pointer integrations layout-wide */
+html, body {
+  cursor: url('/custom-cursor.png') 0 0, auto !important;
+}
+a, button, [role="button"], .cursor-pointer {
+  cursor: url('/custom-pointer.png') 6 0, pointer !important;
+}
+

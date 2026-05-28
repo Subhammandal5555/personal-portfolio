@@ -45,12 +45,29 @@ export default function Contact() {
       }
     };
 
-    const scriptId = "recaptcha-api-script";
-    let script = document.getElementById(scriptId) as HTMLScriptElement | null;
+    // Check if window.grecaptcha is already fully loaded
+    const gc = (window as any).grecaptcha;
+    if (gc && gc.render) {
+      renderWidget();
+      return;
+    }
 
-    if (!script) {
-      script = document.createElement("script");
-      script.id = scriptId;
+    // Check if there is already a script tag loading Google reCAPTCHA
+    const existingScript = document.querySelector('script[src*="recaptcha"]');
+
+    if (existingScript) {
+      const interval = setInterval(() => {
+        const currentGc = (window as any).grecaptcha;
+        if (currentGc && currentGc.render) {
+          clearInterval(interval);
+          renderWidget();
+        }
+      }, 100);
+      
+      // Stop polling after 10s fallback
+      setTimeout(() => clearInterval(interval), 10000);
+    } else {
+      const script = document.createElement("script");
       script.src = "https://www.google.com/recaptcha/api.js?render=explicit";
       script.async = true;
       script.defer = true;
@@ -58,21 +75,14 @@ export default function Contact() {
 
       script.onload = () => {
         const interval = setInterval(() => {
-          const grecaptcha = (window as any).grecaptcha;
-          if (grecaptcha && grecaptcha.render) {
+          const currentGc = (window as any).grecaptcha;
+          if (currentGc && currentGc.render) {
             clearInterval(interval);
             renderWidget();
           }
         }, 100);
+        setTimeout(() => clearInterval(interval), 10000);
       };
-    } else {
-      const interval = setInterval(() => {
-        const grecaptcha = (window as any).grecaptcha;
-        if (grecaptcha && grecaptcha.render) {
-          clearInterval(interval);
-          renderWidget();
-        }
-      }, 100);
     }
   }, []);
 

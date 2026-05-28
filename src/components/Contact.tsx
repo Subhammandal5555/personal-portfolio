@@ -189,6 +189,7 @@ export default function Contact() {
                 name="contact"
                 method="POST"
                 data-netlify="true"
+                data-netlify-recaptcha="true"
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-6"
               >
@@ -245,6 +246,9 @@ export default function Contact() {
                     Don’t fill this out if you’re human: <input name="bot-field" />
                   </label>
                 </div>
+
+                {/* Netlify reCAPTCHA verification placeholder */}
+                <div data-netlify-recaptcha="true" className="my-2 flex justify-center md:justify-start"></div>
 
                 {/* CTA Button with 300ms transitions and shadow-glow lift on hover */}
                 <button

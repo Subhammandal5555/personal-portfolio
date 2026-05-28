@@ -13,20 +13,34 @@ export default function Contact() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    const isLocalhost = 
+      window.location.hostname === "localhost" || 
+      window.location.hostname === "127.0.0.1";
+
+    const container = document.getElementById("recaptcha-container");
+    if (!container) return;
+
+    if (isLocalhost) {
+      container.innerHTML = `
+        <div class="p-4 rounded border border-brand-border bg-brand-bg/30 text-xs font-sans text-gray-400 flex items-center gap-3 select-none max-w-sm">
+          <div class="w-4 h-4 rounded-full border-2 border-brand-accent/40 border-t-brand-accent animate-spin"></div>
+          <span>🛡️ Netlify reCAPTCHA Active (Local Dev Simulation)</span>
+        </div>
+      `;
+      return;
+    }
+
     const renderWidget = () => {
       const grecaptcha = (window as any).grecaptcha;
       if (grecaptcha && grecaptcha.render) {
-        const container = document.getElementById("recaptcha-container");
-        if (container) {
-          container.innerHTML = "";
-          try {
-            grecaptcha.render("recaptcha-container", {
-              sitekey: "6Ldf3ZMUAAAAAPo6FXRy4Zojmja2_49qPTyga01K",
-              theme: "dark",
-            });
-          } catch (e) {
-            console.error("reCAPTCHA render error:", e);
-          }
+        container.innerHTML = "";
+        try {
+          grecaptcha.render("recaptcha-container", {
+            sitekey: "6Ldf3ZMUAAAAAPo6FXRy4Zojmja2_49qPTyga01K",
+            theme: "dark",
+          });
+        } catch (e) {
+          console.error("reCAPTCHA render error:", e);
         }
       }
     };

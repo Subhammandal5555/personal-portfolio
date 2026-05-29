@@ -47,10 +47,10 @@ export const metadata: Metadata = {
     siteName: "Subham Mandal Portfolio",
     images: [
       {
-        url: "/favicon.png",
-        width: 512,
-        height: 512,
-        alt: "Subham Mandal Logo",
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Subham Mandal Portfolio - Full-Stack & Electronics Engineering Showcase",
       },
     ],
     locale: "en_US",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Subham Mandal",
     description: "Subham Mandal's portfolio showcasing Next.js, Tailwind CSS, TypeScript, and high-performance UI engineering for web & embedded systems.",
-    images: ["/favicon.png"],
+    images: ["/opengraph-image.png"],
   },
   icons: {
     icon: "/favicon.png",

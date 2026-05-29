@@ -81,26 +81,43 @@ div[style*="z-index: 2000000000"]:has(iframe[title*="recaptcha challenge"]) {
 }
 
 @media screen and (max-width: 440px) {
-  /* 2. Scale the challenge iframe directly. We leave the parent div wrapper unscaled
-     to prevent Google's absolute layout listener from entering an infinite resize loop! */
-  iframe[title*="recaptcha challenge"],
-  iframe[src*="bframe"] {
-    transform: scale(0.82) !important;
-    transform-origin: top center !important;
-    -webkit-transform: scale(0.82) !important;
-    -webkit-transform-origin: top center !important;
+  /* 2. Force the challenge popup to behave as a fixed, perfectly viewport-centered modal.
+     This completely overrides Google's dynamic pixel offsets, prevents page horizontal scrolling,
+     and locks the challenge popup dead-center on mobile viewports! */
+  body > div[style*="position: absolute"]:has(iframe[src*="bframe"]),
+  body > div[style*="position: absolute"]:has(iframe[title*="recaptcha challenge"]),
+  div[style*="z-index: 2000000000"]:has(iframe[src*="bframe"]),
+  div[style*="z-index: 2000000000"]:has(iframe[title*="recaptcha challenge"]) {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(0.82) !important;
+    transform-origin: center center !important;
+    -webkit-transform: translate(-50%, -50%) scale(0.82) !important;
+    -webkit-transform-origin: center center !important;
+  }
+
+  /* 3. Ensure the direct iframe is unscaled (reset) to prevent double-scaling */
+  body > div:has(iframe[src*="bframe"]) iframe,
+  body > div:has(iframe[title*="recaptcha challenge"]) iframe {
+    transform: scale(1) !important;
+    -webkit-transform: scale(1) !important;
   }
 }
 
 @media screen and (max-width: 360px) {
-  /* 2. Scale the challenge iframe directly. We leave the parent div wrapper unscaled
-     to prevent Google's absolute layout listener from entering an infinite resize loop! */
-  iframe[title*="recaptcha challenge"],
-  iframe[src*="bframe"] {
-    transform: scale(0.72) !important;
-    transform-origin: top center !important;
-    -webkit-transform: scale(0.72) !important;
-    -webkit-transform-origin: top center !important;
+  /* 2. Scale the viewport-centered challenge popup even tighter for very small screens */
+  body > div[style*="position: absolute"]:has(iframe[src*="bframe"]),
+  body > div[style*="position: absolute"]:has(iframe[title*="recaptcha challenge"]),
+  div[style*="z-index: 2000000000"]:has(iframe[src*="bframe"]),
+  div[style*="z-index: 2000000000"]:has(iframe[title*="recaptcha challenge"]) {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(0.72) !important;
+    transform-origin: center center !important;
+    -webkit-transform: translate(-50%, -50%) scale(0.72) !important;
+    -webkit-transform-origin: center center !important;
   }
 }
 

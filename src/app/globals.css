@@ -72,6 +72,7 @@ a, button, [role="button"], .cursor-pointer {
 
 /* Make Google reCAPTCHA Challenge Popup Mobile Responsive */
 @media screen and (max-width: 440px) {
+  /* 1. Target and scale the challenge iframe directly as a robust fallback */
   iframe[title*="recaptcha challenge"],
   iframe[src*="bframe"] {
     transform: scale(0.82) !important;
@@ -80,21 +81,27 @@ a, button, [role="button"], .cursor-pointer {
     -webkit-transform-origin: 0 0 !important;
   }
   
-  @supports (selector(:has(*))) {
-    body > div:has(iframe[src*="bframe"]),
-    body > div:has(iframe[title*="recaptcha challenge"]) {
-      transform: scale(0.82) !important;
-      transform-origin: center center !important;
-    }
-    
-    body > div:has(iframe[src*="bframe"]) iframe,
-    body > div:has(iframe[title*="recaptcha challenge"]) iframe {
-      transform: scale(1) !important;
-    }
+  /* 2. Target the absolute positioning wrapper div injected by Google at the root */
+  body > div[style*="position: absolute"]:has(iframe[src*="bframe"]),
+  body > div[style*="position: absolute"]:has(iframe[title*="recaptcha challenge"]),
+  div[style*="z-index: 2000000000"]:has(iframe[src*="bframe"]),
+  div[style*="z-index: 2000000000"]:has(iframe[title*="recaptcha challenge"]) {
+    transform: scale(0.82) !important;
+    transform-origin: 0 0 !important; /* Scale from top-left to pull the right edge inside the screen */
+  }
+
+  /* 3. Prevent double-scaling if the parent container gets scaled */
+  body > div[style*="position: absolute"]:has(iframe[src*="bframe"]) iframe,
+  body > div[style*="position: absolute"]:has(iframe[title*="recaptcha challenge"]) iframe,
+  div[style*="z-index: 2000000000"]:has(iframe[src*="bframe"]) iframe,
+  div[style*="z-index: 2000000000"]:has(iframe[title*="recaptcha challenge"]) iframe {
+    transform: scale(1) !important;
+    -webkit-transform: scale(1) !important;
   }
 }
 
 @media screen and (max-width: 360px) {
+  /* 1. Target and scale the challenge iframe directly as a robust fallback */
   iframe[title*="recaptcha challenge"],
   iframe[src*="bframe"] {
     transform: scale(0.72) !important;
@@ -103,17 +110,22 @@ a, button, [role="button"], .cursor-pointer {
     -webkit-transform-origin: 0 0 !important;
   }
   
-  @supports (selector(:has(*))) {
-    body > div:has(iframe[src*="bframe"]),
-    body > div:has(iframe[title*="recaptcha challenge"]) {
-      transform: scale(0.72) !important;
-      transform-origin: center center !important;
-    }
-    
-    body > div:has(iframe[src*="bframe"]) iframe,
-    body > div:has(iframe[title*="recaptcha challenge"]) iframe {
-      transform: scale(1) !important;
-    }
+  /* 2. Target the absolute positioning wrapper div injected by Google at the root */
+  body > div[style*="position: absolute"]:has(iframe[src*="bframe"]),
+  body > div[style*="position: absolute"]:has(iframe[title*="recaptcha challenge"]),
+  div[style*="z-index: 2000000000"]:has(iframe[src*="bframe"]),
+  div[style*="z-index: 2000000000"]:has(iframe[title*="recaptcha challenge"]) {
+    transform: scale(0.72) !important;
+    transform-origin: 0 0 !important;
+  }
+
+  /* 3. Prevent double-scaling if the parent container gets scaled */
+  body > div[style*="position: absolute"]:has(iframe[src*="bframe"]) iframe,
+  body > div[style*="position: absolute"]:has(iframe[title*="recaptcha challenge"]) iframe,
+  div[style*="z-index: 2000000000"]:has(iframe[src*="bframe"]) iframe,
+  div[style*="z-index: 2000000000"]:has(iframe[title*="recaptcha challenge"]) iframe {
+    transform: scale(1) !important;
+    -webkit-transform: scale(1) !important;
   }
 }
 

@@ -87,6 +87,61 @@ export default function Contact() {
     }
   }, []);
 
+  // Automatically dismiss/close the Google reCAPTCHA challenge popup on page scroll
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleScroll = () => {
+      // Find the challenge iframe to ensure the challenge popup is active
+      const iframe = document.querySelector(
+        'iframe[src*="bframe"], iframe[title*="recaptcha challenge"]'
+      ) as HTMLIFrameElement | null;
+      
+      if (!iframe) return;
+
+      // Find the top-level container div of this iframe (which is a direct child of body)
+      const container = iframe.closest("body > div");
+      if (!container) return;
+
+      // Find all divs inside this container and find the transparent overlay mask
+      const allDivs = Array.from(container.getElementsByTagName("div"));
+      const googleOverlay = allDivs.find((div) => {
+        const computed = window.getComputedStyle(div);
+        const isFixed = computed.position === "fixed" || div.style.position === "fixed";
+        const isFullScreen = 
+          div.style.width === "100%" || 
+          computed.width === "100%" || 
+          div.style.height === "100%" ||
+          computed.height === "100%" ||
+          (div.style.top === "0px" && div.style.left === "0px");
+        
+        const hasOverlayZIndex = 
+          computed.zIndex === "2000000000" || 
+          div.style.zIndex === "2000000000" ||
+          computed.zIndex === "2147483647" ||
+          div.style.zIndex === "2147483647";
+
+        return isFixed && isFullScreen && hasOverlayZIndex;
+      });
+
+      // Programmatically trigger a click on Google's background overlay
+      // which instantly and safely closes the challenge puzzle!
+      const targetToClick = googleOverlay || allDivs[0] || container;
+      if (targetToClick) {
+        try {
+          (targetToClick as HTMLElement).click();
+        } catch (err) {
+          console.error("Error closing reCAPTCHA puzzle on scroll:", err);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const handleEmailClick = (e: React.MouseEvent) => {
     e.preventDefault();
     const decoded = atob(encodedEmail);

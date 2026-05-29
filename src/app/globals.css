@@ -70,3 +70,50 @@ a, button, [role="button"], .cursor-pointer {
   cursor: url('/custom-pointer.png') 6 0, pointer !important;
 }
 
+/* Make Google reCAPTCHA Challenge Popup Mobile Responsive */
+@media screen and (max-width: 440px) {
+  iframe[title*="recaptcha challenge"],
+  iframe[src*="bframe"] {
+    transform: scale(0.82) !important;
+    transform-origin: 0 0 !important;
+    -webkit-transform: scale(0.82) !important;
+    -webkit-transform-origin: 0 0 !important;
+  }
+  
+  @supports (selector(:has(*))) {
+    body > div:has(iframe[src*="bframe"]),
+    body > div:has(iframe[title*="recaptcha challenge"]) {
+      transform: scale(0.82) !important;
+      transform-origin: center center !important;
+    }
+    
+    body > div:has(iframe[src*="bframe"]) iframe,
+    body > div:has(iframe[title*="recaptcha challenge"]) iframe {
+      transform: scale(1) !important;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  iframe[title*="recaptcha challenge"],
+  iframe[src*="bframe"] {
+    transform: scale(0.72) !important;
+    transform-origin: 0 0 !important;
+    -webkit-transform: scale(0.72) !important;
+    -webkit-transform-origin: 0 0 !important;
+  }
+  
+  @supports (selector(:has(*))) {
+    body > div:has(iframe[src*="bframe"]),
+    body > div:has(iframe[title*="recaptcha challenge"]) {
+      transform: scale(0.72) !important;
+      transform-origin: center center !important;
+    }
+    
+    body > div:has(iframe[src*="bframe"]) iframe,
+    body > div:has(iframe[title*="recaptcha challenge"]) iframe {
+      transform: scale(1) !important;
+    }
+  }
+}
+

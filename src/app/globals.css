@@ -71,8 +71,17 @@ a, button, [role="button"], .cursor-pointer {
 }
 
 /* Make Google reCAPTCHA Challenge Popup Mobile Responsive */
+
+/* 1. Force the challenge popup absolute wrapper to render on top of all other page elements */
+body > div[style*="position: absolute"]:has(iframe[src*="bframe"]),
+body > div[style*="position: absolute"]:has(iframe[title*="recaptcha challenge"]),
+div[style*="z-index: 2000000000"]:has(iframe[src*="bframe"]),
+div[style*="z-index: 2000000000"]:has(iframe[title*="recaptcha challenge"]) {
+  z-index: 2147483647 !important;
+}
+
 @media screen and (max-width: 440px) {
-  /* 1. Target and scale the challenge iframe directly as a robust fallback */
+  /* 2. Target and scale the challenge iframe directly as a robust fallback */
   iframe[title*="recaptcha challenge"],
   iframe[src*="bframe"] {
     transform: scale(0.82) !important;
@@ -81,7 +90,7 @@ a, button, [role="button"], .cursor-pointer {
     -webkit-transform-origin: top center !important;
   }
   
-  /* 2. Target the absolute positioning wrapper div injected by Google at the root */
+  /* 3. Target the absolute positioning wrapper div injected by Google at the root */
   body > div[style*="position: absolute"]:has(iframe[src*="bframe"]),
   body > div[style*="position: absolute"]:has(iframe[title*="recaptcha challenge"]),
   div[style*="z-index: 2000000000"]:has(iframe[src*="bframe"]),

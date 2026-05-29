@@ -76,9 +76,9 @@ a, button, [role="button"], .cursor-pointer {
   iframe[title*="recaptcha challenge"],
   iframe[src*="bframe"] {
     transform: scale(0.82) !important;
-    transform-origin: 0 0 !important;
+    transform-origin: top center !important;
     -webkit-transform: scale(0.82) !important;
-    -webkit-transform-origin: 0 0 !important;
+    -webkit-transform-origin: top center !important;
   }
   
   /* 2. Target the absolute positioning wrapper div injected by Google at the root */
@@ -87,7 +87,7 @@ a, button, [role="button"], .cursor-pointer {
   div[style*="z-index: 2000000000"]:has(iframe[src*="bframe"]),
   div[style*="z-index: 2000000000"]:has(iframe[title*="recaptcha challenge"]) {
     transform: scale(0.82) !important;
-    transform-origin: 0 0 !important; /* Scale from top-left to pull the right edge inside the screen */
+    transform-origin: top center !important; /* Scale from top-center to pull both edges inside the screen symmetrically */
   }
 
   /* 3. Prevent double-scaling if the parent container gets scaled */
@@ -105,9 +105,9 @@ a, button, [role="button"], .cursor-pointer {
   iframe[title*="recaptcha challenge"],
   iframe[src*="bframe"] {
     transform: scale(0.72) !important;
-    transform-origin: 0 0 !important;
+    transform-origin: top center !important;
     -webkit-transform: scale(0.72) !important;
-    -webkit-transform-origin: 0 0 !important;
+    -webkit-transform-origin: top center !important;
   }
   
   /* 2. Target the absolute positioning wrapper div injected by Google at the root */
@@ -116,7 +116,7 @@ a, button, [role="button"], .cursor-pointer {
   div[style*="z-index: 2000000000"]:has(iframe[src*="bframe"]),
   div[style*="z-index: 2000000000"]:has(iframe[title*="recaptcha challenge"]) {
     transform: scale(0.72) !important;
-    transform-origin: 0 0 !important;
+    transform-origin: top center !important;
   }
 
   /* 3. Prevent double-scaling if the parent container gets scaled */

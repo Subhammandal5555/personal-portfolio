@@ -48,8 +48,3 @@ next-env.d.ts
 *.njsproj
 *.sln
 *.sw?
-
-# AI assistant guidelines (local only)
-AGENTS.md
-CLAUDE.md
-GEMINI.md

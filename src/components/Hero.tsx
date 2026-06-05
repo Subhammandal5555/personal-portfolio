@@ -82,13 +82,7 @@ export default function Hero() {
           className="flex flex-col items-center"
         >
           {/* Subheading Badges */}
-          <motion.div
-            variants={heroItemVariants}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-border bg-brand-card/40 backdrop-blur-sm mb-6 text-xs uppercase tracking-widest text-gray-400 font-sans"
-          >
-            <span className="flex h-1.5 w-1.5 rounded-full bg-[#40D04E] animate-ping" />
-            <span>Open For Opportunities</span>
-          </motion.div>
+
 
           {/* Main Title - Cyberpunk high-contrast typography with staggered blur-reveal */}
           <motion.h1 
